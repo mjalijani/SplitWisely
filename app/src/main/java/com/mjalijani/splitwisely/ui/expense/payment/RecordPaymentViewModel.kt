@@ -1,5 +1,12 @@
 package com.mjalijani.splitwisely.ui.expense.payment
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
-class RecordPaymentViewModel : ViewModel() {}
+
+@HiltViewModel
+class RecordPaymentViewModel : ViewModel() {
+    fun getPaymentInfo() {}
+    fun recordPayment() {}
+    fun deletePayment() {}
+}
