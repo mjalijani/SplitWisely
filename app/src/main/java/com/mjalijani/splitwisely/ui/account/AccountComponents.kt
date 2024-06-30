@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -23,10 +22,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -91,13 +91,17 @@ internal fun AccountProfileItemComponent(
                     modifier = Modifier.padding(vertical = padding_4),
                     text = fullName,
                     color = MaterialTheme.colorScheme.onPrimary,
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
                 Text(
                     modifier = Modifier.padding(vertical = padding_4),
                     text = email,
                     color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.5f),
-                    fontSize = 13.sp
+                    fontSize = 13.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
             }
         }
@@ -143,7 +147,9 @@ internal fun AccountItemComponent(
                 modifier = Modifier,
                 text = title,
                 color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 16.sp
+                fontSize = 16.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
             )
         }
         Icon(
@@ -167,7 +173,7 @@ internal fun AccountHeaderItemComponent(modifier: Modifier = Modifier, title: St
         text = title,
         color = MaterialTheme.colorScheme.onPrimary,
         fontSize = 14.sp,
-        textAlign = TextAlign.Start
+        textAlign = TextAlign.Start,
     )
 }
 
@@ -194,7 +200,7 @@ internal fun AccountTopBarComponent(
             modifier = Modifier
                 .align(Alignment.CenterEnd)
                 .clickable { onUpgradeClick?.invoke() },
-            text = "Get SplitWisely Pro!",
+            text = stringResource(id = R.string.get_pro),
             color = MaterialTheme.colorScheme.secondary,
             fontSize = 18.sp
         )
@@ -207,7 +213,7 @@ internal fun AccountTitleComponent(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = padding_8, vertical = padding_16),
-        text = "Account",
+        text = stringResource(id = R.string.account),
         color = MaterialTheme.colorScheme.onPrimary,
         fontSize = 22.sp,
         textAlign = TextAlign.Start
@@ -229,7 +235,7 @@ private fun AccountTitleComponentPreview(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun AccountTopBarComponentPreview() {
-
+    AccountTopBarComponent()
 }
 
 @Preview
