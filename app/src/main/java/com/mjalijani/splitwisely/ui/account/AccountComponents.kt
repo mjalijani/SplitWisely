@@ -85,9 +85,9 @@ internal fun AccountProfileItemComponent(
                     tint = MaterialTheme.colorScheme.onPrimary
                 )
             }
-            Column(modifier = Modifier.padding(start = padding_8), verticalArrangement = Arrangement.Center) {
+            Column(modifier = Modifier.padding(start = padding_16), verticalArrangement = Arrangement.Center) {
                 Text(
-                    modifier = Modifier.padding(vertical = padding_4),
+                    modifier = Modifier.padding(bottom = padding_4),
                     text = fullName,
                     color = MaterialTheme.colorScheme.onPrimary,
                     fontSize = 16.sp,
@@ -95,7 +95,7 @@ internal fun AccountProfileItemComponent(
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
-                    modifier = Modifier.padding(vertical = padding_4),
+                    modifier = Modifier,
                     text = email,
                     color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.5f),
                     fontSize = 13.sp,
@@ -153,8 +153,8 @@ internal fun AccountItemComponent(
         }
         Icon(
             modifier = Modifier
-                .height(image_16)
-                .width(image_16),
+                .height(image_24)
+                .width(image_24),
             imageVector = Icons.Filled.KeyboardArrowRight,
             contentDescription = "action",
             tint = MaterialTheme.colorScheme.onSurface // this may have to be updated later

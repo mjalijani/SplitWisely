@@ -7,14 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.mjalijani.splitwisely.ui.accountRoute
 import com.mjalijani.splitwisely.ui.accountScreen
+import com.mjalijani.splitwisely.ui.navigateToProfile
+import com.mjalijani.splitwisely.ui.profileScreen
 import com.mjalijani.splitwisely.ui.theme.SplitWiselyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,26 +31,13 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = accountRoute
                     ) {
-                        accountScreen()
+                        accountScreen(
+                            navigateToProfile = {navController.navigateToProfile()}
+                        )
+                        profileScreen()
                     }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SplitWiselyTheme {
-        Greeting("Android")
     }
 }

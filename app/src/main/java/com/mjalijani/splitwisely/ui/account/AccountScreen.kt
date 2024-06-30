@@ -16,6 +16,7 @@ import com.mjalijani.splitwisely.R
 @Composable
 fun AccountScreen(
     modifier: Modifier = Modifier,
+    navigateToProfile: () -> Unit,
     viewModel: AccountViewModel = hiltViewModel()
 ) {
     val scrollState = rememberScrollState()
@@ -34,7 +35,10 @@ fun AccountScreen(
         AccountTitleComponent()
 
         AccountHeaderItemComponent(title = "Settings")
-        AccountProfileItemComponent(fullName = "test full name", email = "test@test.com")
+        AccountProfileItemComponent(
+            fullName = "test full name",
+            email = "test@test.com",
+            onClick = { navigateToProfile.invoke() })
         AccountItemComponent(title = "Scan Code", iconRes = R.drawable.ic_scan)
         Divider(thickness = 0.5.dp)
         AccountItemComponent(title = "SplitWisely Pro")
@@ -55,6 +59,6 @@ fun AccountScreen(
 @Preview
 @Composable
 private fun AccountScreenPreview() {
-    AccountScreen()
+    AccountScreen(navigateToProfile = {})
 }
 
