@@ -90,7 +90,7 @@ internal fun AccountProfileItemComponent(
                     modifier = Modifier.padding(bottom = padding_4),
                     text = fullName,
                     color = MaterialTheme.colorScheme.onPrimary,
-                    fontSize = 16.sp,
+                    fontSize = 14.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
@@ -98,7 +98,7 @@ internal fun AccountProfileItemComponent(
                     modifier = Modifier,
                     text = email,
                     color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.5f),
-                    fontSize = 13.sp,
+                    fontSize = 11.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
@@ -146,7 +146,7 @@ internal fun AccountItemComponent(
                 modifier = Modifier,
                 text = title,
                 color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 16.sp,
+                fontSize = 14.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -171,7 +171,7 @@ internal fun AccountHeaderItemComponent(modifier: Modifier = Modifier, title: St
             .padding(horizontal = padding_8, vertical = padding_24),
         text = title,
         color = MaterialTheme.colorScheme.onPrimary,
-        fontSize = 14.sp,
+        fontSize = 12.sp,
         textAlign = TextAlign.Start,
     )
 }
@@ -201,7 +201,7 @@ internal fun AccountTopBarComponent(
                 .clickable { onUpgradeClick?.invoke() },
             text = stringResource(id = R.string.get_pro),
             color = MaterialTheme.colorScheme.secondary,
-            fontSize = 18.sp
+            fontSize = 16.sp
         )
     }
 }
@@ -214,7 +214,7 @@ internal fun AccountTitleComponent(modifier: Modifier = Modifier) {
             .padding(horizontal = padding_8, vertical = padding_16),
         text = stringResource(id = R.string.account),
         color = MaterialTheme.colorScheme.onPrimary,
-        fontSize = 22.sp,
+        fontSize = 20.sp,
         textAlign = TextAlign.Start
     )
 }
