@@ -12,6 +12,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.mjalijani.splitwisely.ui.accountRoute
 import com.mjalijani.splitwisely.ui.accountScreen
+import com.mjalijani.splitwisely.ui.activityRoute
+import com.mjalijani.splitwisely.ui.activityScreen
 import com.mjalijani.splitwisely.ui.navigateToProfile
 import com.mjalijani.splitwisely.ui.profileScreen
 import com.mjalijani.splitwisely.ui.theme.SplitWiselyTheme
@@ -29,12 +31,13 @@ class MainActivity : ComponentActivity() {
                     NavHost(
                         modifier = Modifier.padding(innerPadding),
                         navController = navController,
-                        startDestination = accountRoute
+                        startDestination = activityRoute
                     ) {
                         accountScreen(
                             navigateToProfile = {navController.navigateToProfile()}
                         )
                         profileScreen()
+                        activityScreen()
                     }
                 }
             }
