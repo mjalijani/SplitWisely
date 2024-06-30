@@ -27,6 +27,7 @@ import com.mjalijani.splitwisely.ui.theme.dimen.image_24
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_16
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_24
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_32
+import com.mjalijani.splitwisely.ui.theme.dimen.padding_4
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_8
 
 
@@ -40,24 +41,29 @@ internal fun AccountItemComponent(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = padding_8, vertical = padding_16)
-            .clickable { onClick?.invoke() },
+            .clickable { onClick?.invoke() }
+            .padding(horizontal = padding_8, vertical = padding_16),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(modifier = Modifier.weight(1f)) {
+        Row(modifier = Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically) {
             iconRes?.let {
                 AsyncImage(
-                    modifier = Modifier.height(image_24).width(image_24),
+                    modifier = Modifier
+                        .padding(end = padding_8)
+                        .height(image_24)
+                        .width(image_24),
                     model = iconRes,
                     contentDescription = "icon",
                     contentScale = ContentScale.Crop, // may need to be updated later
                     colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.primary)
                 )
             }
-            Text(text = title, color = MaterialTheme.colorScheme.onPrimary, fontSize = 16.sp)
+            Text(modifier = Modifier,text = title, color = MaterialTheme.colorScheme.onPrimary, fontSize = 16.sp)
         }
         Icon(
-            modifier = Modifier.height(image_16).width(image_16),
+            modifier = Modifier
+                .height(image_16)
+                .width(image_16),
             imageVector = Icons.Filled.KeyboardArrowRight,
             contentDescription = "action",
             tint = MaterialTheme.colorScheme.onSurface // this may have to be updated later
