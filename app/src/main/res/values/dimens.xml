@@ -28,4 +28,16 @@
     <dimen name="image_34">34dp</dimen>
     <dimen name="image_36">30dp</dimen>
     <dimen name="image_42">42dp</dimen>
+
+
+    <dimen name="corner_4">4dp</dimen>
+    <dimen name="corner_8">8dp</dimen>
+    <dimen name="corner_10">10dp</dimen>
+    <dimen name="corner_12">12dp</dimen>
+    <dimen name="corner_16">16dp</dimen>
+    <dimen name="corner_18">18dp</dimen>
+    <dimen name="corner_20">20dp</dimen>
+    <dimen name="corner_24">24dp</dimen>
+    <dimen name="corner_30">30dp</dimen>
+    <dimen name="corner_32">32dp</dimen>
 </resources>

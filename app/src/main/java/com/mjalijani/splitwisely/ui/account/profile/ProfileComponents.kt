@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mjalijani.splitwisely.R
+import com.mjalijani.splitwisely.ui.theme.dimen.corner_8
 import com.mjalijani.splitwisely.ui.theme.dimen.image_16
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_4
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_8
@@ -44,13 +45,7 @@ internal fun ProfileItemComponent(
             .fillMaxWidth()
             .padding(vertical = padding_4)
     ) {
-        Text(
-            modifier = Modifier,
-            text = title,
-            color = MaterialTheme.colorScheme.onPrimary,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Light
-        )
+        ProfileItemHeader(title = title)
         Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically) {
             Text(
                 modifier = Modifier.padding(end = padding_4),
@@ -93,22 +88,16 @@ internal fun ProfileDropDown(modifier: Modifier = Modifier, items: List<String>,
             .fillMaxWidth()
             .padding(vertical = padding_4)
     ) {
-        Text(
-            modifier = Modifier,
-            text = title,
-            color = MaterialTheme.colorScheme.onPrimary,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Light
-        )
+        ProfileItemHeader(title = title)
         Text(
             modifier = Modifier
                 .fillMaxWidth()
                 .border(
-                    shape = RoundedCornerShape(8.dp),
+                    shape = RoundedCornerShape(corner_8),
                     color = MaterialTheme.colorScheme.primaryContainer,
                     width = 0.5.dp
                 )
-                .clip(RoundedCornerShape(8.dp))
+                .clip(RoundedCornerShape(corner_8))
                 .clickable { expanded.value = true }
                 .padding(padding_8),
             text = selectedItem.value
@@ -130,10 +119,19 @@ internal fun ProfileDropDown(modifier: Modifier = Modifier, items: List<String>,
                     },
                 )
             }
-
         }
-
     }
+}
+
+@Composable
+private fun ProfileItemHeader(modifier: Modifier = Modifier, title: String) {
+    Text(
+        modifier = modifier,
+        text = title,
+        color = MaterialTheme.colorScheme.onPrimary,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Light
+    )
 }
 
 @Preview
@@ -151,6 +149,6 @@ private fun ProfileItemComponentPreview() {
 
 @Preview
 @Composable
-fun EditComponentPreview() {
+private fun EditComponentPreview() {
     EditComponent()
 }
