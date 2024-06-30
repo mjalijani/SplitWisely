@@ -33,9 +33,8 @@ import coil.compose.AsyncImage
 import com.mjalijani.splitwisely.R
 import com.mjalijani.splitwisely.ui.theme.dimen.image_16
 import com.mjalijani.splitwisely.ui.theme.dimen.image_24
-import com.mjalijani.splitwisely.ui.theme.dimen.image_42
+import com.mjalijani.splitwisely.ui.theme.dimen.image_46
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_16
-import com.mjalijani.splitwisely.ui.theme.dimen.padding_2
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_24
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_4
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_8
@@ -62,14 +61,14 @@ internal fun AccountProfileItemComponent(
         Row(modifier = Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically) {
             Box(
                 modifier = Modifier
-                    .height(image_42)
-                    .width(image_42)
+                    .height(image_46)
+                    .width(image_46)
                     .clickable { onProfilePictureClick?.invoke() }
             ) {
                 AsyncImage(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(padding_2)
+                        .padding(padding_4)
                         .clip(CircleShape)
                     ,
                     model = profilePicUrl,
@@ -86,7 +85,7 @@ internal fun AccountProfileItemComponent(
                     tint = MaterialTheme.colorScheme.onPrimary
                 )
             }
-            Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
+            Column(modifier = Modifier.padding(start = padding_8), verticalArrangement = Arrangement.Center) {
                 Text(
                     modifier = Modifier.padding(vertical = padding_4),
                     text = fullName,
@@ -140,7 +139,7 @@ internal fun AccountItemComponent(
                     model = iconRes,
                     contentDescription = "icon",
                     contentScale = ContentScale.Crop, // may need to be updated later
-                    colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.primary)
+                    colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.onPrimary)
                 )
             }
             Text(
