@@ -23,22 +23,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.mjalijani.splitwisely.R
 import com.mjalijani.splitwisely.ui.theme.dimen.image_16
 import com.mjalijani.splitwisely.ui.theme.dimen.image_24
-import com.mjalijani.splitwisely.ui.theme.dimen.image_36
 import com.mjalijani.splitwisely.ui.theme.dimen.image_42
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_16
+import com.mjalijani.splitwisely.ui.theme.dimen.padding_2
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_24
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_4
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_8
 
 private const val mockImageUrl =
-    "https://plugins.shopware-staging.overdose.digital/media/d3/e3/a5/1690970711/test%20(1).png"
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png"
 
 @Composable
 internal fun AccountProfileItemComponent(
@@ -66,19 +69,21 @@ internal fun AccountProfileItemComponent(
                 AsyncImage(
                     modifier = Modifier
                         .fillMaxSize()
-                        .clip(CircleShape),
+                        .padding(padding_2)
+                        .clip(CircleShape)
+                    ,
                     model = profilePicUrl,
                     contentDescription = "profile picture",
                     contentScale = ContentScale.Crop
                 )
-                // this icon image is not good, camera drawable required
                 Icon(
                     modifier = Modifier
                         .align(Alignment.BottomEnd)
                         .height(image_16)
                         .width(image_16),
-                    imageVector = Icons.Default.Add,
-                    contentDescription = "take picture"
+                    painter = painterResource(id = R.drawable.ic_camera),
+                    contentDescription = "take picture",
+                    tint = MaterialTheme.colorScheme.onPrimary
                 )
             }
             Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
