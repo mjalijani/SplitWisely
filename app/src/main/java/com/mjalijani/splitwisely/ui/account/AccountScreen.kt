@@ -34,6 +34,7 @@ fun AccountScreen(
         AccountTitleComponent()
 
         AccountHeaderItemComponent(title = "Settings")
+        AccountProfileItemComponent(fullName = "test full name", email = "test@test.com")
         AccountItemComponent(title = "Scan Code", iconRes = R.drawable.ic_scan)
         Divider(thickness = 0.5.dp)
         AccountItemComponent(title = "SplitWisely Pro")

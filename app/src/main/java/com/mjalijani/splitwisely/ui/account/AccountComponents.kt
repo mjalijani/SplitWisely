@@ -1,13 +1,18 @@
 package com.mjalijani.splitwisely.ui.account
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -16,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
@@ -24,12 +30,82 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.mjalijani.splitwisely.ui.theme.dimen.image_16
 import com.mjalijani.splitwisely.ui.theme.dimen.image_24
+import com.mjalijani.splitwisely.ui.theme.dimen.image_36
+import com.mjalijani.splitwisely.ui.theme.dimen.image_42
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_16
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_24
-import com.mjalijani.splitwisely.ui.theme.dimen.padding_32
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_4
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_8
 
+private const val mockImageUrl =
+    "https://plugins.shopware-staging.overdose.digital/media/d3/e3/a5/1690970711/test%20(1).png"
+
+@Composable
+internal fun AccountProfileItemComponent(
+    modifier: Modifier = Modifier,
+    fullName: String,
+    email: String,
+    profilePicUrl: String = mockImageUrl,
+    onClick: (() -> Unit)? = null,
+    onProfilePictureClick: (() -> Unit)? = null
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable { onClick?.invoke() }
+            .padding(horizontal = padding_8, vertical = padding_16),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Row(modifier = Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .height(image_42)
+                    .width(image_42)
+                    .clickable { onProfilePictureClick?.invoke() }
+            ) {
+                AsyncImage(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(CircleShape),
+                    model = profilePicUrl,
+                    contentDescription = "profile picture",
+                    contentScale = ContentScale.Crop
+                )
+                // this icon image is not good, camera drawable required
+                Icon(
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .height(image_16)
+                        .width(image_16),
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "take picture"
+                )
+            }
+            Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
+                Text(
+                    modifier = Modifier.padding(vertical = padding_4),
+                    text = fullName,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                    fontSize = 16.sp
+                )
+                Text(
+                    modifier = Modifier.padding(vertical = padding_4),
+                    text = email,
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.5f),
+                    fontSize = 13.sp
+                )
+            }
+        }
+        Icon(
+            modifier = Modifier
+                .height(image_16)
+                .width(image_16),
+            imageVector = Icons.Filled.KeyboardArrowRight,
+            contentDescription = "action",
+            tint = MaterialTheme.colorScheme.onSurface // this may have to be updated later
+        )
+    }
+}
 
 @Composable
 internal fun AccountItemComponent(
@@ -58,7 +134,12 @@ internal fun AccountItemComponent(
                     colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.primary)
                 )
             }
-            Text(modifier = Modifier,text = title, color = MaterialTheme.colorScheme.onPrimary, fontSize = 16.sp)
+            Text(
+                modifier = Modifier,
+                text = title,
+                color = MaterialTheme.colorScheme.onPrimary,
+                fontSize = 16.sp
+            )
         }
         Icon(
             modifier = Modifier
@@ -126,6 +207,12 @@ internal fun AccountTitleComponent(modifier: Modifier = Modifier) {
         fontSize = 22.sp,
         textAlign = TextAlign.Start
     )
+}
+
+@Preview
+@Composable
+private fun AccountProfileItemComponentPreview(modifier: Modifier = Modifier) {
+    AccountProfileItemComponent(fullName = "test full name", email = "Sepehr.test@gmail.com")
 }
 
 @Preview

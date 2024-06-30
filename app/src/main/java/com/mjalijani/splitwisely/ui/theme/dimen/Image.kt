@@ -31,4 +31,9 @@ val image_36: Dp
     @Composable
     get() = dimensionResource(id = R.dimen.image_36)
 
+@Stable
+val image_42: Dp
+    @Composable
+    get() = dimensionResource(id = R.dimen.image_42)
+
 
