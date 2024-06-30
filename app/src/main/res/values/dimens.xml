@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_2">2dp</dimen>
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_6">6dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_12">12dp</dimen>
+    <dimen name="padding_14">14dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_18">18dp</dimen>
+    <dimen name="padding_20">20dp</dimen>
+    <dimen name="padding_30">30dp</dimen>
+    <dimen name="padding_24">24dp</dimen>
+    <dimen name="padding_32">32dp</dimen>
+    <dimen name="padding_35">35dp</dimen>
+    <dimen name="padding_36">36dp</dimen>
+    <dimen name="padding_40">40dp</dimen>
+    <dimen name="padding_50">50dp</dimen>
+    <dimen name="padding_56">56dp</dimen>
+
+    <dimen name="image_8">8dp</dimen>
+    <dimen name="image_16">16dp</dimen>
+    <dimen name="image_20">20dp</dimen>
+    <dimen name="image_24">24dp</dimen>
+    <dimen name="image_30">30dp</dimen>
+    <dimen name="image_32">32dp</dimen>
+    <dimen name="image_34">34dp</dimen>
+    <dimen name="image_36">30dp</dimen>
+</resources>
