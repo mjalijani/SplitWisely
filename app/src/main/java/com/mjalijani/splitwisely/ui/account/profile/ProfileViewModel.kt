@@ -2,9 +2,10 @@ package com.mjalijani.splitwisely.ui.account.profile
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel @Inject constructor() : ViewModel() {
 
     init {
 
