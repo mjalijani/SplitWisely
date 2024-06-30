@@ -1,5 +1,6 @@
 package com.mjalijani.splitwisely.ui.account.profile
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
@@ -28,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mjalijani.splitwisely.R
+import com.mjalijani.splitwisely.ui.theme.dimen.corner_16
 import com.mjalijani.splitwisely.ui.theme.dimen.corner_8
 import com.mjalijani.splitwisely.ui.theme.dimen.image_16
 import com.mjalijani.splitwisely.ui.theme.dimen.padding_4
@@ -82,7 +85,7 @@ private fun EditComponent(modifier: Modifier = Modifier) {
 @Composable
 internal fun ProfileDropDown(modifier: Modifier = Modifier, items: List<String>, title: String) {
     val expanded = remember { mutableStateOf(false) }
-    val selectedItem = remember { mutableStateOf("") }
+    val selectedItem = remember { mutableStateOf(items.first()) }
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -100,7 +103,8 @@ internal fun ProfileDropDown(modifier: Modifier = Modifier, items: List<String>,
                 .clip(RoundedCornerShape(corner_8))
                 .clickable { expanded.value = true }
                 .padding(padding_8),
-            text = selectedItem.value
+            text = selectedItem.value,
+            color = MaterialTheme.colorScheme.onPrimary
         )
         DropdownMenu(
             expanded = expanded.value,
@@ -124,6 +128,23 @@ internal fun ProfileDropDown(modifier: Modifier = Modifier, items: List<String>,
 }
 
 @Composable
+internal fun SaveProfileButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
+    Text(
+        modifier = modifier
+            .padding(vertical = padding_4)
+            .clip(RoundedCornerShape(CornerSize(corner_8)))
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .padding(padding_8)
+            .clickable {
+                onClick.invoke()
+            },
+        text = stringResource(id = R.string.save_changes),
+        color = MaterialTheme.colorScheme.onPrimaryContainer,
+        fontSize = 14.sp
+    )
+}
+
+@Composable
 private fun ProfileItemHeader(modifier: Modifier = Modifier, title: String) {
     Text(
         modifier = modifier,
@@ -132,6 +153,12 @@ private fun ProfileItemHeader(modifier: Modifier = Modifier, title: String) {
         fontSize = 14.sp,
         fontWeight = FontWeight.Light
     )
+}
+
+@Preview
+@Composable
+private fun SaveProfileButtonPreview() {
+    SaveProfileButton(onClick = {})
 }
 
 @Preview
