@@ -2,10 +2,11 @@ package com.mjalijani.splitwisely.ui.expense.expenseDetail
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 
 @HiltViewModel
-class ExpenseDetailViewModel : ViewModel() {
+class ExpenseDetailViewModel @Inject constructor() : ViewModel() {
 
     init {
         getExpenseDetail()
