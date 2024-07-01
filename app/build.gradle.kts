@@ -111,6 +111,7 @@ dependencies {
 
     // Kotlin Serialization
     implementation(libs.kotlin.serialization)
+    implementation(libs.gson.serialization)
 
     // Retrofit with Jakewharton Converter
     implementation(libs.jakewharton.converter)
