@@ -3,7 +3,7 @@ package com.mjalijani.splitwisely.data.api.remote.entity.response.expense
 
 import com.google.gson.annotations.SerializedName
 
-data class CreateAnExpenseByEqualRequestRemote(
+data class CreateAnExpenseRequestRemote(
     @SerializedName("category_id")
     val categoryId: Int,
     @SerializedName("cost")
