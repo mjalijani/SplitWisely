@@ -8,14 +8,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.mjalijani.splitwisely.ui.accountRoute
-import com.mjalijani.splitwisely.ui.accountScreen
-import com.mjalijani.splitwisely.ui.activityRoute
-import com.mjalijani.splitwisely.ui.activityScreen
-import com.mjalijani.splitwisely.ui.navigateToProfile
-import com.mjalijani.splitwisely.ui.profileScreen
+import com.mjalijani.splitwisely.ui.navigation.accountScreen
+import com.mjalijani.splitwisely.ui.navigation.activityRoute
+import com.mjalijani.splitwisely.ui.navigation.activityScreen
+import com.mjalijani.splitwisely.ui.navigation.bottomBar.BottomBar
+import com.mjalijani.splitwisely.ui.navigation.bottomBar.BottomBarAppStatus
+import com.mjalijani.splitwisely.ui.navigation.bottomBar.rememberBottomBarAppStatus
+import com.mjalijani.splitwisely.ui.navigation.friendsScreen
+import com.mjalijani.splitwisely.ui.navigation.groupsScreen
+import com.mjalijani.splitwisely.ui.navigation.navigateToProfile
+import com.mjalijani.splitwisely.ui.navigation.newExpenseScreen
+import com.mjalijani.splitwisely.ui.navigation.profileScreen
 import com.mjalijani.splitwisely.ui.theme.SplitWiselyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,20 +32,36 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SplitWiselyTheme {
-                val navController = rememberNavController()
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NavHost(
-                        modifier = Modifier.padding(innerPadding),
-                        navController = navController,
-                        startDestination = activityRoute
-                    ) {
-                        accountScreen(
-                            navigateToProfile = {navController.navigateToProfile()}
+                val appState: BottomBarAppStatus = rememberBottomBarAppStatus()
+                val navController = appState.navController
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    content = { innerPadding ->
+                        NavHost(
+                            modifier = Modifier.padding(innerPadding),
+                            navController = navController,
+                            startDestination = activityRoute
+                        ) {
+                            accountScreen(
+                                navigateToProfile = { navController.navigateToProfile() }
+                            )
+                            profileScreen()
+                            activityScreen()
+                            friendsScreen()
+                            groupsScreen()
+                            newExpenseScreen()
+                        }
+
+                    },
+                    bottomBar = {
+                        BottomBar(
+                            destinations = appState.navBottomDestinations,
+                            onNavigateToDestination = appState::navigateToBottomBarDestination,
+                            currentDestination = appState.currentDestination,
+                            modifier = Modifier.testTag("BottomBar"),
                         )
-                        profileScreen()
-                        activityScreen()
                     }
-                }
+                )
             }
         }
     }

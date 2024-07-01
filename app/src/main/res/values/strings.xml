@@ -8,4 +8,9 @@
     <string name="get_pro">Get SplitWisely Pro!</string>
     <string name="account">Account</string>
     <string name="save_changes">Save changes</string>
+
+    <string name="friends">Friends</string>
+    <string name="groups">Groups</string>
+    <string name="activity">Activity</string>
+
 </resources>
