@@ -1,20 +1,46 @@
 [versions]
 agp = "8.4.2"
 kotlin = "1.9.0"
+hilt = "2.44"
 coreKtx = "1.10.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.8.0"
 composeBom = "2023.08.00"
+okhttp-version = "5.0.0-alpha.3"
+scalar-converter-version = "2.9.0"
+kotlin-serialization-version = "1.5.1"
+gson-serialization-version = "2.5.0"
+jakewharton-convertor-version = "1.0.0"
+retrofit-version = "2.9.0"
+timber_version = "5.0.1"
+work-runtime-ktx = "2.8.1"
+room-runtime = "2.5.0"
+nav_compose_version = "1.1.0"
+hilt-work-version = "1.0.0"
+lifecycle-viewmodel-ktx = "2.7.0"
+paging-runtime-ktx = "3.2.1"
+hilt-version = "2.48"
+hilt-compiler-version  ="2.44"
+kotlinx-serialization-json = "1.5.1"
+hilt-android-compiler = "2.48"
+lifecycle-runtime-ktx = "2.7.0"
+coil-compose = "2.4.0"
+org-jetbrains-kotlin-android = "1.9.0"
 
 [libraries]
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging-runtime-ktx" }
+androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "paging-runtime-ktx" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-runtime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room-runtime" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "room-runtime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room-runtime" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
@@ -25,7 +51,27 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt-version" }
+dagger-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt-compiler-version" }
+dagger_nav_compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "nav_compose_version"}
+androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hilt-work-version" }
+androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "hilt-work-version" }
+
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber_version" }
+
+retrofit2 = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit-version" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp-version" }
+scalar-converter = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "scalar-converter-version" }
+gson-serialization = { module = "com.squareup.retrofit2:converter-gson", version.ref = "gson-serialization-version" }
+kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization-version" }
+jakewharton-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "jakewharton-convertor-version" }
+
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle-runtime-ktx" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+com-dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "org-jetbrains-kotlin-android" }
