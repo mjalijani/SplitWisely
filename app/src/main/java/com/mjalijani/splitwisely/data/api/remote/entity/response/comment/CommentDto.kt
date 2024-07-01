@@ -1,10 +1,10 @@
-package com.mjalijani.splitwisely.data.api.remote.entity.response.expense
+package com.mjalijani.splitwisely.data.api.remote.entity.response.comment
 
 
 import com.google.gson.annotations.SerializedName
-import com.mjalijani.splitwisely.data.api.remote.entity.response.user.User
+import com.mjalijani.splitwisely.data.api.remote.entity.response.user.UserDto
 
-data class Comment(
+data class CommentDto(
     @SerializedName("comment_type")
     val commentType: String,
     @SerializedName("content")
@@ -20,5 +20,5 @@ data class Comment(
     @SerializedName("relation_type")
     val relationType: String,
     @SerializedName("user")
-    val user: User
+    val user: UserDto
 )

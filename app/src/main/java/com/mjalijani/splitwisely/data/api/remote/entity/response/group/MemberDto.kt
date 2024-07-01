@@ -1,10 +1,12 @@
-package com.mjalijani.splitwisely.data.api.remote.entity.response.expense
+package com.mjalijani.splitwisely.data.api.remote.entity.response.group
 
 
 import com.google.gson.annotations.SerializedName
-import com.mjalijani.splitwisely.data.api.remote.entity.response.user.Picture
+import com.mjalijani.splitwisely.data.api.remote.entity.response.user.PictureDto
 
-data class DeletedBy(
+data class MemberDto(
+    @SerializedName("balance")
+    val balance: List<BalanceDto>,
     @SerializedName("custom_picture")
     val customPicture: Boolean,
     @SerializedName("email")
@@ -16,7 +18,7 @@ data class DeletedBy(
     @SerializedName("last_name")
     val lastName: String,
     @SerializedName("picture")
-    val picture: Picture,
+    val picture: PictureDto,
     @SerializedName("registration_status")
     val registrationStatus: String
 )

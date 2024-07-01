@@ -2,15 +2,16 @@ package com.mjalijani.splitwisely.data.api.remote.entity.response.expense
 
 
 import com.google.gson.annotations.SerializedName
-import com.mjalijani.splitwisely.data.api.remote.entity.response.user.User
+import com.mjalijani.splitwisely.data.api.remote.entity.response.comment.CommentDto
+import com.mjalijani.splitwisely.data.api.remote.entity.response.user.UserDto
 
-data class Expense(
+data class ExpenseDto(
     @SerializedName("category")
-    val category: Category,
+    val category: CategoryDto,
     @SerializedName("category_id")
     val categoryId: Int,
     @SerializedName("comments")
-    val comments: List<Comment>,
+    val comments: List<CommentDto>,
     @SerializedName("comments_count")
     val commentsCount: Int,
     @SerializedName("cost")
@@ -18,7 +19,7 @@ data class Expense(
     @SerializedName("created_at")
     val createdAt: String,
     @SerializedName("created_by")
-    val createdBy: CreatedBy,
+    val createdBy: CreatedByDto,
     @SerializedName("currency_code")
     val currencyCode: String,
     @SerializedName("date")
@@ -26,7 +27,7 @@ data class Expense(
     @SerializedName("deleted_at")
     val deletedAt: String,
     @SerializedName("deleted_by")
-    val deletedBy: DeletedBy,
+    val deletedBy: DeletedByDto,
     @SerializedName("description")
     val description: String,
     @SerializedName("details")
@@ -48,9 +49,9 @@ data class Expense(
     @SerializedName("payment")
     val payment: Boolean,
     @SerializedName("receipt")
-    val receipt: Receipt,
+    val receipt: ReceiptDto,
     @SerializedName("repayments")
-    val repayments: List<Repayment>,
+    val repayments: List<RepaymentDto>,
     @SerializedName("repeat_interval")
     val repeatInterval: String,
     @SerializedName("repeats")
@@ -60,7 +61,7 @@ data class Expense(
     @SerializedName("updated_at")
     val updatedAt: String,
     @SerializedName("updated_by")
-    val updatedBy: UpdatedBy,
+    val updatedBy: UpdatedByDto,
     @SerializedName("users")
-    val users: List<User>
+    val users: List<UserDto>
 )

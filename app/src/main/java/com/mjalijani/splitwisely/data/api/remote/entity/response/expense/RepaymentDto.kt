@@ -1,13 +1,11 @@
-package com.mjalijani.splitwisely.data.api.remote.entity.response.group
+package com.mjalijani.splitwisely.data.api.remote.entity.response.expense
 
 
 import com.google.gson.annotations.SerializedName
 
-data class SimplifiedDebt(
+data class RepaymentDto(
     @SerializedName("amount")
     val amount: String,
-    @SerializedName("currency_code")
-    val currencyCode: String,
     @SerializedName("from")
     val from: Int,
     @SerializedName("to")

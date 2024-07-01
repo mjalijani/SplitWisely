@@ -1,9 +1,9 @@
-package com.mjalijani.splitwisely.data.api.remote.entity.response.friend
+package com.mjalijani.splitwisely.data.api.remote.entity.response.group
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Balance(
+data class BalanceDto(
     @SerializedName("amount")
     val amount: String,
     @SerializedName("currency_code")

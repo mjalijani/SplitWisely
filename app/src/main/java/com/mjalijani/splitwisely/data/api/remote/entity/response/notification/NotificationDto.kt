@@ -3,7 +3,7 @@ package com.mjalijani.splitwisely.data.api.remote.entity.response.notification
 
 import com.google.gson.annotations.SerializedName
 
-data class Notification(
+data class NotificationDto(
     @SerializedName("content")
     val content: String,
     @SerializedName("created_at")
@@ -17,7 +17,7 @@ data class Notification(
     @SerializedName("image_url")
     val imageUrl: String,
     @SerializedName("source")
-    val source: Source,
+    val source: SourceDto,
     @SerializedName("type")
     val type: Int
 )

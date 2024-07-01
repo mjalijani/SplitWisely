@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class SupportedCategoriesResponseRemote(
     @SerializedName("categories")
-    val categories: List<Category>
+    val categories: List<CategoryDto>
 )

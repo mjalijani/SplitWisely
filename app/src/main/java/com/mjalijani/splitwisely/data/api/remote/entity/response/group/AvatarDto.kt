@@ -3,7 +3,7 @@ package com.mjalijani.splitwisely.data.api.remote.entity.response.group
 
 import com.google.gson.annotations.SerializedName
 
-data class Avatar(
+data class AvatarDto(
     @SerializedName("large")
     val large: String,
     @SerializedName("medium")

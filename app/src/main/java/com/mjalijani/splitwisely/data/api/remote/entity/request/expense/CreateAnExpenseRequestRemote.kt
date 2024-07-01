@@ -1,4 +1,4 @@
-package com.mjalijani.splitwisely.data.api.remote.entity.response.expense
+package com.mjalijani.splitwisely.data.api.remote.entity.request.expense
 
 
 import com.google.gson.annotations.SerializedName

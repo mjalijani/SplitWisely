@@ -3,9 +3,9 @@ package com.mjalijani.splitwisely.data.api.remote.entity.response
 
 import com.google.gson.annotations.SerializedName
 
-data class IconTypes(
+data class IconTypesDto(
     @SerializedName("slim")
-    val slim: Slim,
+    val slimDto: SlimDto,
     @SerializedName("square")
-    val square: Square
+    val squareDto: SquareDto
 )

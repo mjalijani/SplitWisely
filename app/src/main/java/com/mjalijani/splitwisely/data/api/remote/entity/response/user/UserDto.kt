@@ -3,7 +3,7 @@ package com.mjalijani.splitwisely.data.api.remote.entity.response.user
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
+data class UserDto(
     @SerializedName("custom_picture")
     val customPicture: Boolean?,
     @SerializedName("default_currency")
@@ -19,13 +19,13 @@ data class User(
     @SerializedName("locale")
     val locale: String?,
     @SerializedName("notifications")
-    val notifications: Notifications?,
+    val notifications: NotificationsDto?,
     @SerializedName("notifications_count")
     val notificationsCount: Int?,
     @SerializedName("notifications_read")
     val notificationsRead: String?,
     @SerializedName("picture")
-    val picture: Picture?,
+    val picture: PictureDto?,
     @SerializedName("registration_status")
     val registrationStatus: String?,
     @SerializedName("net_balance")
@@ -35,7 +35,7 @@ data class User(
     @SerializedName("paid_share")
     val paidShare: String?,
     @SerializedName("user")
-    val user: User?,
+    val user: UserDto?,
     @SerializedName("user_id")
     val userId: Int?
 )

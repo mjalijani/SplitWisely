@@ -3,11 +3,11 @@ package com.mjalijani.splitwisely.data.api.remote.entity.response.group
 
 import com.google.gson.annotations.SerializedName
 
-data class Group(
+data class GroupDto(
     @SerializedName("avatar")
-    val avatar: Avatar,
+    val avatar: AvatarDto,
     @SerializedName("cover_photo")
-    val coverPhoto: CoverPhoto,
+    val coverPhoto: CoverPhotoDto,
     @SerializedName("custom_avatar")
     val customAvatar: Boolean,
     @SerializedName("group_type")
@@ -17,13 +17,13 @@ data class Group(
     @SerializedName("invite_link")
     val inviteLink: String,
     @SerializedName("members")
-    val members: List<Member>,
+    val members: List<MemberDto>,
     @SerializedName("name")
     val name: String,
     @SerializedName("original_debts")
-    val originalDebts: List<OriginalDebt>,
+    val originalDebts: List<OriginalDebtDto>,
     @SerializedName("simplified_debts")
-    val simplifiedDebts: List<SimplifiedDebt>,
+    val simplifiedDebts: List<SimplifiedDebtDto>,
     @SerializedName("simplify_by_default")
     val simplifyByDefault: Boolean,
     @SerializedName("updated_at")
