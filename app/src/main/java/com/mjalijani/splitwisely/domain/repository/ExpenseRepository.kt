@@ -8,7 +8,7 @@ interface ExpenseRepository {
 
     suspend fun getCurrentUserExpenses(): ResultState<List<Expense>>
 
-    suspend fun getAnotherUser(id: String): ResultState<Expense>
+    suspend fun getAnotherUserExpense(id: String): ResultState<Expense>
 
     suspend fun createExpense(createExpenseParam: CreateExpenseParam): ResultState<List<Expense>>
 
