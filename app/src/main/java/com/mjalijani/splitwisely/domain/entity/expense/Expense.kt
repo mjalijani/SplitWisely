@@ -1,11 +1,10 @@
 package com.mjalijani.splitwisely.domain.entity.expense
 
-import com.mjalijani.splitwisely.domain.entity.Category
 import com.mjalijani.splitwisely.domain.entity.comment.Comment
 import com.mjalijani.splitwisely.domain.entity.user.User
 
 data class Expense(
-    val category: Category,
+    val expenseCategory: ExpenseCategory,
     val categoryId: Int,
     val comments: List<Comment>,
     val commentsCount: Int,
