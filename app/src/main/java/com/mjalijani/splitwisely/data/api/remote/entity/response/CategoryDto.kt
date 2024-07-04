@@ -2,6 +2,7 @@ package com.mjalijani.splitwisely.data.api.remote.entity.response
 
 
 import com.google.gson.annotations.SerializedName
+import com.mjalijani.splitwisely.domain.entity.category.Category
 
 data class CategoryDto(
     @SerializedName("icon")
@@ -14,4 +15,12 @@ data class CategoryDto(
     val name: String,
     @SerializedName("subcategories")
     val subcategories: List<SubcategoryDto>
-)
+) {
+    fun toDomainModel() : Category = Category(
+        icon = icon,
+        iconTypes = iconTypes.toDomainModel(),
+        id = id,
+        name = name,
+        subcategories = subcategories.map { it.toDomainModel() }
+    )
+}
