@@ -9,6 +9,8 @@
     <string name="account">Account</string>
     <string name="save_changes">Save changes</string>
 
+    <string name="add_friends">Add friends</string>
+
     <string name="friends">Friends</string>
     <string name="groups">Groups</string>
     <string name="activity">Activity</string>
