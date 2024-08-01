@@ -1,21 +1,26 @@
 package com.mjalijani.splitwisely.ui.friends.components
 
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mjalijani.splitwisely.R
-import com.mjalijani.splitwisely.ui.theme.dimen.image_24
-import com.mjalijani.splitwisely.ui.theme.dimen.image_36
+import com.mjalijani.splitwisely.ui.theme.LightError
+import com.mjalijani.splitwisely.ui.theme.LightSuccess
+import com.mjalijani.splitwisely.ui.theme.OweBackgroundColor
 
 @Composable
 internal fun FriendsOverallComponent(
@@ -23,28 +28,23 @@ internal fun FriendsOverallComponent(
     oweValue: String,
     owedValue: String
 ) {
-    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-        ) {
-            Text(
-                text = "Overall, you owe $oweValue",
-                color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 14.sp
-            )
-            Text(
-                text = "and you are owed $owedValue",
-                color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 14.sp
-            )
-        }
-        Image(
-            modifier = Modifier.size(image_36),
-            painter = painterResource(id = R.drawable.ic_filter),
-            contentDescription = "filter friends"
-        )
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Absolute.SpaceBetween) {
+        OweCard(title = "Owe You", amount = "$14,000", amountTextColor = LightSuccess)
+        OweCard(title = "You Owe", amount = "$20,000", amountTextColor = LightError)
+    }
+}
+
+@Composable
+fun OweCard(modifier: Modifier = Modifier, title: String, amount: String, amountTextColor: Color) {
+    Column(
+        modifier = modifier
+            .clip(shape = RoundedCornerShape(10.dp))
+            .background(color = OweBackgroundColor)
+            .padding(vertical = 10.dp, horizontal = 50.dp)
+    ) {
+        Text(text = title)
+        Spacer(Modifier.size(10.dp))
+        Text(text = amount, color = amountTextColor, fontWeight = FontWeight.Bold, fontSize = 20.sp)
     }
 }
 
