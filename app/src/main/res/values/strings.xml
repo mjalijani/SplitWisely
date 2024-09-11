@@ -14,5 +14,7 @@
     <string name="friends">Friends</string>
     <string name="groups">Groups</string>
     <string name="activity">Activity</string>
+    <string name="share">Share</string>
+    <string name="copy">copy</string>
 
 </resources>
