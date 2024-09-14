@@ -115,4 +115,8 @@ dependencies {
 
     // Retrofit with Jakewharton Converter
     implementation(libs.jakewharton.converter)
+
+    // Persian Date
+    implementation(libs.persian.date)
+
 }
