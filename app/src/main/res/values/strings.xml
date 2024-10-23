@@ -16,5 +16,6 @@
     <string name="activity">Activity</string>
     <string name="share">Share</string>
     <string name="copy">copy</string>
+    <string name="email">Email</string>
 
 </resources>
