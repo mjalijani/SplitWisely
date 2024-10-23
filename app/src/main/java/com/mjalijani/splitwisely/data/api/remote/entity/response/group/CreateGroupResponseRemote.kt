@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class CreateGroupResponseRemote(
     @SerializedName("group")
-    val group: Group
+    val group: GroupDto
 )

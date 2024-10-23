@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import com.mjalijani.splitwisely.ui.account.AccountScreen
 import com.mjalijani.splitwisely.ui.account.profile.ProfileScreen
 import com.mjalijani.splitwisely.ui.activity.ActivityScreen
+import com.mjalijani.splitwisely.ui.friends.FriendsScreen
 
 const val friendsRoute = "friends_route"
 const val newExpenseRoute = "new_expense"
@@ -39,7 +40,7 @@ fun NavGraphBuilder.activityScreen() {
 
 fun NavGraphBuilder.friendsScreen() {
     composable(route = friendsRoute) {
-        Text(text = "testing")
+        FriendsScreen()
     }
 }
 

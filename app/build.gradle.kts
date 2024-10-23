@@ -42,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.7"
     }
     packaging {
         resources {
@@ -115,4 +115,8 @@ dependencies {
 
     // Retrofit with Jakewharton Converter
     implementation(libs.jakewharton.converter)
+
+    // Persian Date
+    implementation(libs.persian.date)
+
 }

@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class GetExpenseCommentResponseRemote(
     @SerializedName("comments")
-    val comments: List<Comment>
+    val comments: List<CommentDto>
 )

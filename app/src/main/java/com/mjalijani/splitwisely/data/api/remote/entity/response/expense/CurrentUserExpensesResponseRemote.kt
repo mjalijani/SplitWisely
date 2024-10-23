@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class CurrentUserExpensesResponseRemote(
     @SerializedName("expenses")
-    val expenses : List<Expense>
+    val expenses : List<ExpenseDto>
 )

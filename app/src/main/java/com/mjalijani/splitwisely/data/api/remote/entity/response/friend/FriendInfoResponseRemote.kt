@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class FriendInfoResponseRemote(
     @SerializedName("friend")
-    val friend: Friend
+    val friend: FriendDto
 )

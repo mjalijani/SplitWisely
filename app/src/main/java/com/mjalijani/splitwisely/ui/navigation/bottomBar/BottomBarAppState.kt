@@ -17,8 +17,6 @@ import com.mjalijani.splitwisely.ui.navigation.navigateToAccount
 import com.mjalijani.splitwisely.ui.navigation.navigateToActivity
 import com.mjalijani.splitwisely.ui.navigation.navigateToFriends
 import com.mjalijani.splitwisely.ui.navigation.navigateToGroup
-import com.mjalijani.splitwisely.ui.navigation.navigateToNewExpense
-import com.mjalijani.splitwisely.ui.navigation.newExpenseRoute
 
 @Composable
 fun rememberBottomBarAppStatus(
@@ -42,7 +40,7 @@ class BottomBarAppStatus(
         @Composable get() = when (currentDestination?.route) {
             friendsRoute -> BottomNavBarDestination.FRIENDS
             groupsRoute -> BottomNavBarDestination.GROUPS
-            newExpenseRoute -> BottomNavBarDestination.NEW_EXPENSE
+//            newExpenseRoute -> BottomNavBarDestination.NEW_EXPENSE
             activityRoute -> BottomNavBarDestination.ACTIVITY
             accountRoute -> BottomNavBarDestination.ACCOUNT
             else -> null
@@ -62,7 +60,7 @@ class BottomBarAppStatus(
         when (bottomNavBarDestination) {
             BottomNavBarDestination.FRIENDS -> navController.navigateToFriends(bottomBarNavOptions)
             BottomNavBarDestination.GROUPS -> navController.navigateToGroup(bottomBarNavOptions)
-            BottomNavBarDestination.NEW_EXPENSE -> navController.navigateToNewExpense(bottomBarNavOptions)
+//            BottomNavBarDestination.NEW_EXPENSE -> navController.navigateToNewExpense(bottomBarNavOptions)
             BottomNavBarDestination.ACTIVITY -> navController.navigateToActivity(bottomBarNavOptions)
             BottomNavBarDestination.ACCOUNT -> navController.navigateToAccount(bottomBarNavOptions)
         }

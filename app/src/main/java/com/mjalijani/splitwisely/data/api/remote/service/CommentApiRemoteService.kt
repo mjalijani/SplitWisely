@@ -2,7 +2,7 @@ package com.mjalijani.splitwisely.data.api.remote.service
 
 import com.mjalijani.splitwisely.data.api.remote.entity.response.comment.CreateCommentResponseRemote
 import com.mjalijani.splitwisely.data.api.remote.entity.response.comment.GetExpenseCommentResponseRemote
-import com.mjalijani.splitwisely.data.api.remote.entity.response.expense.CreateAnExpenseRequestRemote
+import com.mjalijani.splitwisely.data.api.remote.entity.request.expense.CreateAnExpenseRequestRemote
 import com.mjalijani.splitwisely.data.api.remote.entity.response.expense.ExpenseResultResponse
 import retrofit2.Response
 import retrofit2.http.Body

@@ -1,6 +1,6 @@
 package com.mjalijani.splitwisely.data.api.remote.service
 
-import com.mjalijani.splitwisely.data.api.remote.entity.response.expense.CreateAnExpenseRequestRemote
+import com.mjalijani.splitwisely.data.api.remote.entity.request.expense.CreateAnExpenseRequestRemote
 import com.mjalijani.splitwisely.data.api.remote.entity.response.expense.CurrentUserExpensesResponseRemote
 import com.mjalijani.splitwisely.data.api.remote.entity.response.expense.ExpenseInfoResponseRemote
 import com.mjalijani.splitwisely.data.api.remote.entity.response.expense.ExpenseResultResponse

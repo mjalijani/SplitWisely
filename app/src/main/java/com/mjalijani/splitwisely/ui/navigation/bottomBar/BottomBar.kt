@@ -114,7 +114,7 @@ object ChatGptNavigationDefaults {
     fun navigationUnselectedContentColor() = Color.Gray
 
     @Composable
-    fun navigationSelectedItemColor() = Color.Blue
+    fun navigationSelectedItemColor() = Color.Black
 
     @Composable
     fun navigationIndicatorColor() = MaterialTheme.colorScheme.surface
