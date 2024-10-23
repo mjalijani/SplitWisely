@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -24,27 +25,37 @@ import com.mjalijani.splitwisely.ui.theme.Primary
 
 
 @Composable
-fun AppButton(modifier: Modifier = Modifier, text: String, icon: Int, onClick: () -> Unit) {
+fun ButtonApp(
+    modifier: Modifier = Modifier,
+    backgroundColor: Color = Primary,
+    text: String,
+    textColor: Color = Color.White,
+    icon: Int? = null,
+    onClick: () -> Unit
+) {
     Row(
         modifier = modifier
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(corner = CornerSize(8.dp)))
-            .background(color = Primary)
+            .background(color = backgroundColor)
             .padding(10.dp)
             .clickable { onClick.invoke() },
-        horizontalArrangement = Arrangement.Center
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
     )
     {
-        Image(painter = painterResource(icon), contentDescription = null)
+        icon?.let {
+            Image(painter = painterResource(it), contentDescription = null)
+        }
         Spacer(Modifier.size(10.dp))
-        Text(text = text, color = Color.White)
+        Text(text = text, color = textColor)
     }
 }
 
 @Preview
 @Composable
 fun AppButtonPreview(modifier: Modifier = Modifier) {
-    AppButton(text = "copy", icon = R.drawable.copy) { }
+    ButtonApp(text = "copy", icon = R.drawable.copy) { }
 }
 
 

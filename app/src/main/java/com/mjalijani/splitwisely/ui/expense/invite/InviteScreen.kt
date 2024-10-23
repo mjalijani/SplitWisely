@@ -17,8 +17,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mjalijani.splitwisely.R
-import com.mjalijani.splitwisely.ui.components.AppButton
-import com.mjalijani.splitwisely.ui.components.AppTextInput
+import com.mjalijani.splitwisely.ui.components.ButtonApp
+import com.mjalijani.splitwisely.ui.components.TextInputApp
 import com.mjalijani.splitwisely.ui.theme.Surface
 
 @Composable
@@ -38,10 +38,10 @@ fun InviteScreen(modifier: Modifier = Modifier) {
             color = Surface
         )
 
-        AppTextInput { }
+        TextInputApp { }
 
         Row(Modifier.padding(10.dp)) {
-            AppButton(
+            ButtonApp(
                 modifier = Modifier.weight(1f),
                 text = stringResource(R.string.share),
                 icon = R.drawable.share
@@ -49,7 +49,7 @@ fun InviteScreen(modifier: Modifier = Modifier) {
 
             Spacer(Modifier.size(10.dp))
 
-            AppButton(
+            ButtonApp(
                 modifier = Modifier.weight(1f),
                 text = stringResource(R.string.copy),
                 icon = R.drawable.copy
