@@ -17,5 +17,11 @@
     <string name="share">Share</string>
     <string name="copy">copy</string>
     <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="login_msg">Enter your email account and enter your password.</string>
+    <string name="or_login_with">Or Login with</string>
+    <string name="google">Google</string>
+    <string name="don_t_have_an_account">"Don’t have an account? "</string>
+    <string name="sign_up">Sign up</string>
 
 </resources>
