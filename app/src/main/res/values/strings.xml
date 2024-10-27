@@ -23,5 +23,14 @@
     <string name="google">Google</string>
     <string name="don_t_have_an_account">"Don’t have an account? "</string>
     <string name="sign_up">Sign up</string>
+    <string name="hide_password">Hide password</string>
+    <string name="show_password">Show password</string>
+    <string name="reset_pass_msg">Enter your email account to reset password.</string>
+    <string name="or_reset_password_with">Or Reset password with</string>
+    <string name="reset_password">Reset password</string>
+    <string name="enter_your_full_name">Enter your Full name.</string>
+    <string name="already_have_an_account">Already have an account? </string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="next">Next</string>
 
 </resources>
