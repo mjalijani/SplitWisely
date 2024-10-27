@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.mjalijani.splitwisely.ui.theme.Divider
+import com.mjalijani.splitwisely.ui.theme.DividerColor
 import com.mjalijani.splitwisely.ui.theme.SecondaryText
 
 @Composable
@@ -38,7 +38,7 @@ fun TitleWithDivider(title: String) {
         HorizontalDivider(
             modifier = Modifier.weight(1f),
             thickness = 1.dp,
-            color = Divider
+            color = DividerColor
         )
 
 
@@ -54,7 +54,7 @@ fun TitleWithDivider(title: String) {
         HorizontalDivider(
             modifier = Modifier.weight(1f),
             thickness = 1.dp,
-            color = Divider
+            color = DividerColor
         )
     }
 }
