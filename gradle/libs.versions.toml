@@ -1,13 +1,13 @@
 [versions]
-agp = "8.4.2"
-kotlin = "1.9.21"
+agp = "8.7.1"
+kotlin = "1.9.24"
 hilt = "2.44"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-activityCompose = "1.9.2"
-composeBom = "2024.09.03"
+activityCompose = "1.9.3"
+composeBom = "2024.10.00"
 okhttp-version = "5.0.0-alpha.3"
 scalar-converter-version = "2.9.0"
 kotlin-serialization-version = "1.5.1"
@@ -16,7 +16,6 @@ jakewharton-convertor-version = "1.0.0"
 persian-date-version = "1.6.1"
 retrofit-version = "2.9.0"
 timber_version = "5.0.1"
-work-runtime-ktx = "2.8.1"
 room-runtime = "2.6.1"
 nav_compose_version = "1.2.0"
 hilt-work-version = "1.2.0"
@@ -24,11 +23,10 @@ lifecycle-viewmodel-ktx = "2.8.6"
 paging-runtime-ktx = "3.3.2"
 hilt-version = "2.49"
 hilt-compiler-version = "2.44"
-kotlinx-serialization-json = "1.5.1"
-hilt-android-compiler = "2.48"
 lifecycle-runtime-ktx = "2.8.6"
 coil-compose = "2.4.0"
 org-jetbrains-kotlin-android = "1.9.0"
+constraintlayout = "1.0.1"
 
 [libraries]
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
@@ -72,6 +70,7 @@ persian-date = { module = "com.github.samanzamani:PersianDate", version.ref = "p
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle-runtime-ktx" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose",version.ref = "constraintlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
