@@ -18,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -81,12 +82,11 @@ fun PasswordOutLineTextFieldApp(
         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {
-            val image = if (passwordVisible) R.drawable.ic_eye else R.drawable.ic_eye
-
+            val image = if (passwordVisible) R.drawable.eye_slash else R.drawable.ic_eye
             IconButton(onClick = { passwordVisible = !passwordVisible }) {
                 Icon(
                     painter = painterResource(image),
-                    contentDescription = if (passwordVisible) "Hide password" else "Show password"
+                    contentDescription = stringResource(if (passwordVisible) R.string.hide_password else R.string.show_password)
                 )
             }
         },

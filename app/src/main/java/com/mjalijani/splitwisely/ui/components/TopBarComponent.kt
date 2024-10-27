@@ -22,7 +22,7 @@ fun TopBar(modifier: Modifier = Modifier, hasBack: Boolean = false) {
     Row(
         modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (hasBack) Image(
