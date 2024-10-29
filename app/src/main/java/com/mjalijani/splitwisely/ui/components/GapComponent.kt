@@ -8,7 +8,7 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun Gap(size: Int) {
-    Spacer(Modifier.size(size.dp))
+fun Gap(sizeInDp: Int) {
+    Spacer(Modifier.size(sizeInDp.dp))
 }
 

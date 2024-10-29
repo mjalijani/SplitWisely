@@ -1,5 +1,6 @@
 package com.mjalijani.splitwisely.ui.components
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -43,7 +44,7 @@ fun TopActionBar(
     modifier: Modifier = Modifier,
     title: String,
     leftIcon: Int? = null,
-    rightIcon: Int? = null,
+    @DrawableRes rightIcon: Int? = null,
     leftIconOnClick: (() -> Unit)? = null,
     rightIconOnClick: (() -> Unit)? = null
 ) {
@@ -54,7 +55,7 @@ fun TopActionBar(
             containerColor = Color.White
         ),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 32.dp
+            defaultElevation = 1.dp
         )
     ) {
         ConstraintLayout(
