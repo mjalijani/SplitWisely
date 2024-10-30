@@ -11,6 +11,7 @@ val Surface = Color(0xFFE7E7E7)
 val Neutral = Color(0xFFE8E8E9)
 val GraySolid = Color(0xFF575859)
 val ThirdText = Color(0xFF838383)
+val PrimaryText = Color(0xFF3E3E3E)
 
 val Purple40 = Color(0xFF6650a4)
 val DividerColor = Color(0xFFF3F4F4)

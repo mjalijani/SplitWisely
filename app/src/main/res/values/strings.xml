@@ -36,5 +36,9 @@
     <string name="create_group">Create group</string>
     <string name="owe_you">Owe You</string>
     <string name="you_owe">You Owe</string>
+    <string name="no_group">No group here yet...</string>
+    <string name="filter">Filter</string>
+    <string name="details">Details</string>
+    <string name="total_owe">Total owe</string>
 
 </resources>
