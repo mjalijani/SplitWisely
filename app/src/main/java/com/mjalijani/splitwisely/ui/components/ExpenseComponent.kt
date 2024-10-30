@@ -1,34 +1,48 @@
 package com.mjalijani.splitwisely.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import com.mjalijani.splitwisely.R
 import com.mjalijani.splitwisely.data.MockData.fakeTransaction
 import com.mjalijani.splitwisely.data.common.TransactionItem
+import com.mjalijani.splitwisely.ui.theme.LightNeutral
+import com.mjalijani.splitwisely.ui.theme.Neutral
+import com.mjalijani.splitwisely.ui.theme.Surface
 
 @Composable
 fun ExpenseItem(
@@ -54,23 +68,37 @@ fun ExpenseItem(
         Column(modifier = Modifier.weight(1f)) {
             TextApp(
                 item.title,
-                textColor = Color.Black
+                textColor = item.titleColor
             )
 
             Gap(4)
 
-            TextApp(
-                text = item.subtitle,
-                textColor = item.color
-            )
+            item.subtitle?.let {
+                TextApp(
+                    text = it,
+                    textColor = item.subtitleColor
+                )
+            }
+
         }
 
-        TextApp(
-            text = item.dateTime,
-            textColor = Color.Gray,
-            modifier = Modifier.align(Alignment.Bottom)
-        )
+        Column {
+            item.secondTitle?.let {
+                TextApp(
+                    text = it,
+                    textColor = item.secondTitleColor
+                )
+            }
 
+            Gap(4)
+
+            item.secondSubtitle?.let {
+                TextApp(
+                    text = it,
+                    textColor = item.secondSubtitleColor
+                )
+            }
+        }
     }
 }
 
@@ -78,23 +106,26 @@ fun ExpenseItem(
 fun GroupSummaryCard(
     profileImageRes: Int,
     groupName: String,
-    totalOwe: String,
-    memberImages: List<Int> // لیستی از تصاویر اعضا
 ) {
-    Card(
-        shape = RoundedCornerShape(12.dp),
+    var moreVisibility by remember {
+        mutableStateOf(false)
+    }
+
+    ElevatedCard(
+        shape = RoundedCornerShape(8.dp),
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
+            .fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        )
     ) {
         Column {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
+                    .padding(8.dp)
                     .fillMaxWidth()
-                    .padding(16.dp)
             ) {
-                // تصویر پروفایل گروه
                 Image(
                     painter = painterResource(id = profileImageRes),
                     contentDescription = null,
@@ -106,7 +137,6 @@ fun GroupSummaryCard(
 
                 Spacer(modifier = Modifier.width(8.dp))
 
-                // نام گروه
                 Text(
                     text = groupName,
                     fontSize = 16.sp,
@@ -114,233 +144,126 @@ fun GroupSummaryCard(
                     modifier = Modifier.weight(1f)
                 )
 
-                // تصاویر اعضا
-                Row {
-                    memberImages.take(2).forEach { imageRes ->
-                        Image(
-                            painter = painterResource(id = imageRes),
-                            contentDescription = null,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .size(24.dp)
-                                .clip(CircleShape)
-                                .padding(end = 4.dp)
-                        )
-                    }
-                    Text(
-                        text = "+23", // تعداد اضافی اعضا
-                        fontSize = 14.sp,
-                        color = Color.Gray
+                MultiCircularProfile(
+                    firstProfileImage = R.drawable.ali,
+                    secondProfileImage = R.drawable.ali,
+                    count = 10
+                )
+            }
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Neutral)
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(top = 8.dp, bottom = 4.dp, start = 8.dp, end = 8.dp)
+                ) {
+                    TextApp(
+                        text = stringResource(R.string.total_owe),
+                        textColor = Color.Gray
                     )
+                    Spacer(modifier = Modifier.weight(1f))
+                    TextApp(
+                        modifier = Modifier.clickable {
+                            moreVisibility = moreVisibility.not()
+                        },
+                        text = stringResource(R.string.details),
+                        icon = R.drawable.ic_arrow_down,
+                        textColor = Color.Gray
+                    )
+                }
+
+                AnimatedVisibility(visible = moreVisibility) {
+
+                    Column {
+                        HorizontalDivider(
+                            thickness = 1.dp,
+                            color = LightNeutral,
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                        )
+
+                        LazyColumn {
+
+                            items(4) {
+                                ExpenseItem(
+                                    item = fakeTransaction,
+                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                                )
+                            }
+
+                        }
+                    }
+
                 }
             }
 
-            // بخش مبلغ بدهی و دکمه جزئیات
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
-                    .background(Color(0xFFF5F5F5)) // رنگ پس‌زمینه خاکستری روشن
-            ) {
-                Text(
-                    text = "Total owe",
-                    fontSize = 14.sp,
-                    color = Color.Gray
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = totalOwe,
-                    fontSize = 14.sp,
-                    color = Color(0xFF00AA00), // رنگ سبز برای مبلغ
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.weight(1f))
-                Text(
-                    text = "Details",
-                    fontSize = 14.sp,
-                    color = Color.Gray
-                )
-            }
         }
     }
+}
+
+@Composable
+fun MultiCircularProfile(
+    modifier: Modifier = Modifier,
+    firstProfileImage: Int,
+    secondProfileImage: Int,
+    count: Int
+) {
+    Row(modifier, verticalAlignment = Alignment.CenterVertically) {
+        Image(
+            painter = painterResource(id = firstProfileImage),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(24.dp)
+                .zIndex(2f)
+                .clip(CircleShape)
+        )
+        Image(
+            painter = painterResource(id = secondProfileImage),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(24.dp)
+                .offset(x = (-3).dp)
+                .clip(CircleShape)
+                .zIndex(1f)
+        )
+
+        TextApp(
+            text = "+$count",
+            textColor = Color.Black,
+            textSize = 11.sp,
+            modifier = Modifier
+                .size(24.dp)
+                .offset(x = (-6).dp)
+                .background(Surface, shape = CircleShape)
+                .wrapContentSize(align = Alignment.Center)
+        )
+
+    }
+}
+
+@Preview
+@Composable
+private fun MultiCircularProfilePreview() {
+    MultiCircularProfile(
+        firstProfileImage = R.drawable.ali,
+        secondProfileImage = R.drawable.ali,
+        count = 10
+    )
 }
 
 @Preview
 @Composable
 private fun GroupSummaryCardPreview() {
     GroupSummaryCard(
-        profileImageRes = R.drawable.profile,
+        profileImageRes = R.drawable.ali,
         groupName = "Group name",
-        totalOwe = "$190.00",
-        memberImages = listOf(R.drawable.profile, R.drawable.profile)
     )
 }
 
-@Composable
-fun GroupOweCard(
-    profileImageRes: Int,
-    groupName: String,
-    totalOwe: String,
-    memberList: List<Member>,
-    expanded: Boolean = false
-) {
-    val isExpanded = remember { mutableStateOf(expanded) }
-
-    Card(
-        shape = RoundedCornerShape(12.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            // Row: Group info with toggle button
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                // Group profile image
-                Image(
-                    painter = painterResource(id = profileImageRes),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .clip(CircleShape)
-                )
-
-                Spacer(modifier = Modifier.width(8.dp))
-
-                // Group name and member count
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = groupName,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Image(
-                            painter = painterResource(id = profileImageRes),
-                            contentDescription = null,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .size(20.dp)
-                                .clip(CircleShape)
-                        )
-                        Text(
-                            text = "+23", // تعداد اعضای گروه
-                            fontSize = 14.sp,
-                            color = Color.Gray,
-                            modifier = Modifier.padding(start = 4.dp)
-                        )
-                    }
-                }
-
-                // Total owe amount and details button
-                Column(horizontalAlignment = Alignment.End) {
-                    Text(
-                        text = "Total owe $totalOwe",
-                        fontSize = 14.sp,
-                        color = Color(0xFF00AA00), // سبز
-                        fontWeight = FontWeight.Bold
-                    )
-                    Text(
-                        text = "Details",
-                        fontSize = 14.sp,
-                        color = Color.Gray,
-                        modifier = Modifier.padding(top = 4.dp)
-                    )
-                }
-            }
-
-            // Expanded content
-            if (isExpanded.value) {
-                Column(modifier = Modifier.padding(top = 16.dp)) {
-                    memberList.forEach { member ->
-                        MemberOweItem(member = member)
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun MemberOweItem(member: Member) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 4.dp)
-    ) {
-        // Member profile image
-        Image(
-            painter = painterResource(id = member.profileImageRes),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(36.dp)
-                .clip(CircleShape)
-        )
-
-        Spacer(modifier = Modifier.width(8.dp))
-
-        // Member name and owe status
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = member.name,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.SemiBold
-            )
-        }
-
-        // Owe amount
-        Text(
-            text = if (member.owesYou) "Owes you ${member.amount}" else "Owe ${member.name} ${member.amount}",
-            fontSize = 14.sp,
-            color = if (member.owesYou) Color(0xFF00AA00) else Color.Red, // سبز برای بستانکاری، قرمز برای بدهی
-            fontWeight = FontWeight.Bold
-        )
-    }
-}
-
-// مدل داده اعضا
-data class Member(
-    val profileImageRes: Int,
-    val name: String,
-    val amount: String,
-    val owesYou: Boolean
-)
-
-@Preview
-@Composable
-private fun GroupOweCardPreview() {
-    GroupOweCard(
-        profileImageRes = R.drawable.profile,
-        groupName = "Group name",
-        totalOwe = "$150.00",
-        memberList = listOf(
-            Member(
-                profileImageRes = R.drawable.profile,
-                name = "Farhad R.",
-                amount = "$5",
-                owesYou = true
-            ),
-            Member(
-                profileImageRes = R.drawable.profile,
-                name = "Farhad R.",
-                amount = "$5",
-                owesYou = true
-            ),
-            Member(
-                profileImageRes = R.drawable.profile,
-                name = "Reza Y.",
-                amount = "$5",
-                owesYou = false
-            )
-        )
-    )
-}
 
 @Preview
 @Composable

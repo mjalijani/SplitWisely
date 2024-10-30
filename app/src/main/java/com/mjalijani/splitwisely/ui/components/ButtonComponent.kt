@@ -71,6 +71,7 @@ fun OutlineButton(
     outlineWidth: Dp = 1.dp,
     textSize: TextUnit = TextUnit.Unspecified,
     textColor: Color = Primary,
+    tint: Color = Primary,
     onClick: () -> Unit
 ) {
     OutlinedButton(
@@ -82,8 +83,9 @@ fun OutlineButton(
         Row {
             Icon(
                 painter = painterResource(iconResId),
+                tint = tint,
                 contentDescription = null,
-                modifier = Modifier.size(18.dp)
+                modifier = Modifier.size(20.dp)
             )
             Gap(8)
             Text(text = text, fontSize = textSize, color = textColor)

@@ -24,7 +24,6 @@ fun Owe(modifier: Modifier = Modifier, title: String, amount: String) {
             .padding(12.dp),
         shape = RoundedCornerShape(16.dp),
         color = Color(0xFFFAFAFA),
-        shadowElevation = 1.dp
     ) {
         Column(
             modifier = Modifier.padding(16.dp)
