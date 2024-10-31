@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -28,7 +29,9 @@ fun TextApp(
     text: String,
     textColor: Color = Color.White,
     textSize: TextUnit = TextUnit.Unspecified,
+    textAlignment: TextAlign = TextAlign.Start,
     icon: Int? = null,
+    maxLine: Int = 2,
     iconTint: Color = ThirdText,
     modifier: Modifier = Modifier
 ) {
@@ -38,8 +41,11 @@ fun TextApp(
         Text(
             modifier = modifier,
             text = text,
+            maxLines = maxLine,
+            overflow = TextOverflow.Ellipsis,
             color = textColor,
-            fontSize = textSize
+            fontSize = textSize,
+            textAlign = textAlignment
         )
         icon?.let {
             Icon(
