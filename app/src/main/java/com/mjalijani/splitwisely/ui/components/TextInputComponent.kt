@@ -2,6 +2,7 @@ package com.mjalijani.splitwisely.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -26,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mjalijani.splitwisely.R
 import com.mjalijani.splitwisely.ui.theme.Surface
+import com.mjalijani.splitwisely.ui.theme.ThirdText
 
 @Composable
 fun TextInputApp(
@@ -50,9 +52,9 @@ fun TextInputApp(
 @Composable
 fun OutLineTextFieldApp(
     textValue: String,
-    onValueChange: (String) -> Unit,
     label: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onValueChange: (String) -> Unit,
 ) {
     val text by remember { mutableStateOf(textValue) }
 
@@ -95,6 +97,27 @@ fun PasswordOutLineTextFieldApp(
     )
 }
 
+@Composable
+fun HintView(modifier: Modifier = Modifier, textValue: String) {
+    TextApp(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(color = Surface)
+            .padding(16.dp),
+        text = textValue,
+        textColor = ThirdText
+    )
+}
+
+@Preview
+@Composable
+private fun HintPreview() {
+    HintView(textValue = stringResource(
+        R.string.settle_up_reminder_msg,
+        stringResource(R.string.app_name)
+    ))
+}
+
 @Preview
 @Composable
 private fun PasswordOutLineTextFieldAppPreview() {
@@ -104,7 +127,7 @@ private fun PasswordOutLineTextFieldAppPreview() {
 @Preview
 @Composable
 private fun OutLineTextFieldAppPreview() {
-    OutLineTextFieldApp("", {}, "label")
+    OutLineTextFieldApp("", "label") {}
 }
 
 @Preview

@@ -51,7 +51,7 @@ fun SignInScreen(modifier: Modifier = Modifier) {
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            OutLineTextFieldApp("", onValueChange = {}, stringResource(R.string.email))
+            OutLineTextFieldApp("", stringResource(R.string.email)){}
             Gap(16)
             PasswordOutLineTextFieldApp("", onValueChange = {}, true)
             Gap(16)

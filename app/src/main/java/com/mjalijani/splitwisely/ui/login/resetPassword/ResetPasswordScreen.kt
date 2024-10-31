@@ -45,7 +45,7 @@ fun ResetPasswordScreen(modifier: Modifier = Modifier) {
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            OutLineTextFieldApp("", onValueChange = {}, stringResource(R.string.email))
+            OutLineTextFieldApp("", stringResource(R.string.email)) {}
 
             Gap(16)
             ButtonApp(text = stringResource(R.string.reset_password)) { }
