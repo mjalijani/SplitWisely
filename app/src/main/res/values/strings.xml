@@ -43,5 +43,10 @@
     <string name="invite_link">Invite Link</string>
     <string name="invite_msg">Anyone can follow this link to join “Game net” Only share it with people you trust.</string>
     <string name="link_sample">https://www.spliter.com/join/p12fsdJHRsb+3164154153</string>
+    <string name="new_group">New Group</string>
+    <string name="create">Create</string>
+    <string name="group_name">Group name</string>
+    <string name="add_settle_up_reminders">Add settle up reminders</string>
+    <string name="settle_up_reminder_msg">When on, %1$s will remind group members to settle up.</string>
 
 </resources>
