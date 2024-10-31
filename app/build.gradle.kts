@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.mjalijani.splitwisely"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.mjalijani.splitwisely"
@@ -72,6 +72,9 @@ dependencies {
 
     // Coil
     implementation(libs.coil.compose)
+
+    //lottie animation
+    implementation(libs.lottie)
 
     // Paging 3
     implementation(libs.androidx.paging.runtime.ktx)
