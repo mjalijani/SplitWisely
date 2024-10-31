@@ -15,7 +15,7 @@
     <string name="groups">Groups</string>
     <string name="activity">Activity</string>
     <string name="share">Share</string>
-    <string name="copy">copy</string>
+    <string name="copy">Copy</string>
     <string name="email">Email</string>
     <string name="login">Login</string>
     <string name="login_msg">Enter your email account and enter your password.</string>
@@ -40,5 +40,8 @@
     <string name="filter">Filter</string>
     <string name="details">Details</string>
     <string name="total_owe">Total owe</string>
+    <string name="invite_link">Invite Link</string>
+    <string name="invite_msg">Anyone can follow this link to join “Game net” Only share it with people you trust.</string>
+    <string name="link_sample">https://www.spliter.com/join/p12fsdJHRsb+3164154153</string>
 
 </resources>
