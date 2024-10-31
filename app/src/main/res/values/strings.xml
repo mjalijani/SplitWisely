@@ -48,5 +48,6 @@
     <string name="group_name">Group name</string>
     <string name="add_settle_up_reminders">Add settle up reminders</string>
     <string name="settle_up_reminder_msg">When on, %1$s will remind group members to settle up.</string>
+    <string name="comment">Comment</string>
 
 </resources>

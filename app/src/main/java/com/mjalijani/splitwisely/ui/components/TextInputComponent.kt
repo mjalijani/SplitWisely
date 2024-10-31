@@ -11,6 +11,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -32,7 +34,9 @@ import com.mjalijani.splitwisely.ui.theme.ThirdText
 @Composable
 fun TextInputApp(
     modifier: Modifier = Modifier,
-    textValue: String = "https://www.spliter.com/join/p12fsdJHRsb+3164154153",
+    textValue: String = "",
+    placeHolder: String = "",
+    textColor: Color = ThirdText,
     onValueChange: (String) -> Unit
 ) {
     val value by remember {
@@ -43,9 +47,16 @@ fun TextInputApp(
             .clip(shape = RoundedCornerShape(corner = CornerSize(8.dp)))
             .background(color = Surface),
         value = value,
+        placeholder = { TextApp(text = placeHolder) },
         onValueChange = {
             onValueChange.invoke(it)
-        }
+        },
+        colors = TextFieldDefaults.colors(
+            focusedTextColor = textColor,
+            unfocusedTextColor = textColor,
+            unfocusedPlaceholderColor = textColor,
+            focusedPlaceholderColor = textColor
+        )
     )
 }
 
@@ -112,10 +123,12 @@ fun HintView(modifier: Modifier = Modifier, textValue: String) {
 @Preview
 @Composable
 private fun HintPreview() {
-    HintView(textValue = stringResource(
-        R.string.settle_up_reminder_msg,
-        stringResource(R.string.app_name)
-    ))
+    HintView(
+        textValue = stringResource(
+            R.string.settle_up_reminder_msg,
+            stringResource(R.string.app_name)
+        )
+    )
 }
 
 @Preview
@@ -132,7 +145,7 @@ private fun OutLineTextFieldAppPreview() {
 
 @Preview
 @Composable
-fun AppTextInputPreview(modifier: Modifier = Modifier) {
+fun TextInputAppPreview(modifier: Modifier = Modifier) {
     TextInputApp() {
 
     }
