@@ -1,181 +1,157 @@
 package com.mjalijani.splitwisely.ui.account.profile
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.mjalijani.splitwisely.R
-import com.mjalijani.splitwisely.ui.theme.dimen.corner_16
-import com.mjalijani.splitwisely.ui.theme.dimen.corner_8
-import com.mjalijani.splitwisely.ui.theme.dimen.image_16
-import com.mjalijani.splitwisely.ui.theme.dimen.padding_4
-import com.mjalijani.splitwisely.ui.theme.dimen.padding_8
+import com.mjalijani.splitwisely.data.MockData
+import com.mjalijani.splitwisely.ui.components.TextApp
+import com.mjalijani.splitwisely.ui.theme.Primary
+import com.mjalijani.splitwisely.ui.theme.SecondaryText
+import com.mjalijani.splitwisely.ui.theme.Surface
+import com.mjalijani.splitwisely.ui.theme.ThirdText
 
+data class Profile(val image: Int, val name: String, val email: String, val phone: String)
 
 @Composable
 internal fun ProfileItemComponent(
     modifier: Modifier = Modifier,
     title: String,
-    value: String,
 ) {
-    Column(
+    Row(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(vertical = padding_4)
+            .padding(16.dp)
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        ProfileItemHeader(title = title)
-        Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                modifier = Modifier.padding(end = padding_4),
-                text = value,
-                color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold
-            )
-            EditComponent()
-        }
+        Icon(painter = title.getIconFromTitle(), contentDescription = null)
+        TextApp(text = title, textColor = Color.Black, modifier = Modifier.padding(start = 8.dp))
     }
 }
 
 @Composable
-private fun EditComponent(modifier: Modifier = Modifier) {
-    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
-        Icon(
-            modifier = Modifier
-                .height(image_16)
-                .width(image_16),
-            imageVector = Icons.Default.Edit,
-            contentDescription = "edit",
-            tint = MaterialTheme.colorScheme.secondary
-        )
-        Text(
-            modifier = Modifier,
-            text = stringResource(id = R.string.edit),
-            color = MaterialTheme.colorScheme.secondary,
-            fontSize = 13.sp,
-        )
+fun String.getIconFromTitle(): Painter = when (this) {
+    stringResource(R.string.email) -> painterResource(R.drawable.ic_email)
+    stringResource(R.string.passcode_lock) -> painterResource(R.drawable.ic_lock)
+    stringResource(R.string.device_and_push_notification) -> painterResource(R.drawable.ic_notification)
+    stringResource(R.string.advanced) -> painterResource(R.drawable.ic_setting)
+    stringResource(R.string.privacy_policy) -> painterResource(R.drawable.ic_shield_tick)
+    stringResource(R.string.dark_mode) -> painterResource(R.drawable.ic_moon)
+    stringResource(R.string.rate) -> painterResource(R.drawable.ic_star)
+    stringResource(R.string.support) -> painterResource(R.drawable.ic_message_question)
+    else -> {
+        painterResource(R.drawable.rounded_rectangle)
     }
 }
 
 @Composable
-internal fun ProfileDropDown(modifier: Modifier = Modifier, items: List<String>, title: String) {
-    val expanded = remember { mutableStateOf(false) }
-    val selectedItem = remember { mutableStateOf(items.first()) }
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(vertical = padding_4)
-    ) {
-        ProfileItemHeader(title = title)
-        Text(
-            modifier = Modifier
+fun ProfileHeader(modifier: Modifier = Modifier, profile: Profile) {
+    with(profile) {
+        Row(
+            modifier
                 .fillMaxWidth()
-                .border(
-                    shape = RoundedCornerShape(corner_8),
-                    color = MaterialTheme.colorScheme.primaryContainer,
-                    width = 0.5.dp
-                )
-                .clip(RoundedCornerShape(corner_8))
-                .clickable { expanded.value = true }
-                .padding(padding_8),
-            text = selectedItem.value,
-            color = MaterialTheme.colorScheme.onPrimary
-        )
-        DropdownMenu(
-            expanded = expanded.value,
-            onDismissRequest = { expanded.value = false }) {
-            items.forEach {
-                DropdownMenuItem(
-                    text = {
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = it,
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                    },
-                    onClick = {
-                        expanded.value = expanded.value.not()
-                    },
-                )
+                .background(color = Color.White)
+                .padding(16.dp)
+        ) {
+
+            ProfileWithCameraIcon(painterResource(image)) {}
+
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 8.dp),
+                verticalArrangement = Arrangement.Center
+            ) {
+                TextApp(name, textColor = Color.Black)
+                TextApp(email, modifier = modifier.padding(top = 4.dp), textColor = SecondaryText)
+                TextApp(phone, modifier = modifier.padding(top = 2.dp), textColor = ThirdText)
             }
+
         }
     }
 }
 
 @Composable
-internal fun SaveProfileButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
-    Text(
-        modifier = modifier
-            .padding(vertical = padding_4)
-            .clip(RoundedCornerShape(CornerSize(corner_8)))
-            .background(MaterialTheme.colorScheme.primaryContainer)
-            .padding(padding_8)
-            .clickable {
-                onClick.invoke()
-            },
-        text = stringResource(id = R.string.save_changes),
-        color = MaterialTheme.colorScheme.onPrimaryContainer,
-        fontSize = 14.sp
-    )
+fun ProfileWithCameraIcon(profileImage: Painter, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier.size(64.dp)
+    ) {
+
+        Image(
+            painter = profileImage,
+            contentDescription = stringResource(R.string.profile_image),
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(CircleShape)
+        )
+
+        Icon(
+            painter = painterResource(R.drawable.circular_camera),
+            contentDescription = "Take Picture",
+            tint = Color.White,
+            modifier = Modifier
+                .clickable {
+                    onClick.invoke()
+                }
+                .size(24.dp)
+                .align(Alignment.BottomEnd)
+                .offset(x = (-2).dp, y = (-2).dp)
+        )
+    }
 }
 
 @Composable
-private fun ProfileItemHeader(modifier: Modifier = Modifier, title: String) {
-    Text(
-        modifier = modifier,
-        text = title,
-        color = MaterialTheme.colorScheme.onPrimary,
-        fontSize = 14.sp,
-        fontWeight = FontWeight.Light
-    )
+fun ProfileBottomItem(modifier: Modifier = Modifier) {
+    Column(
+        modifier
+            .fillMaxWidth()
+            .background(color = Surface)
+            .padding(32.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        TextApp(stringResource(R.string.made_with_heart), textColor = Primary)
+        TextApp("Version 3.0.3", textColor = SecondaryText, modifier = Modifier.padding(top = 8.dp))
+    }
 }
 
 @Preview
 @Composable
-private fun SaveProfileButtonPreview() {
-    SaveProfileButton(onClick = {})
+private fun ProfileBottomItemPreview() {
+    ProfileBottomItem()
 }
-
-@Preview
-@Composable
-private fun ProfileDropDownPreview() {
-    ProfileDropDown(items = listOf("test1", "test2", "test3"), title = "title")
-}
-
 
 @Preview
 @Composable
 private fun ProfileItemComponentPreview() {
-    ProfileItemComponent(title = "title", value = "value")
+    ProfileItemComponent(title = stringResource(R.string.email))
 }
 
 @Preview
 @Composable
-private fun EditComponentPreview() {
-    EditComponent()
+private fun ProfileHeaderPreview() {
+    ProfileHeader(
+        profile = MockData.profile
+    )
 }
