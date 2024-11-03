@@ -22,8 +22,9 @@ import com.mjalijani.splitwisely.ui.theme.DividerColor
 
 @Composable
 fun GroupsScreen(modifier: Modifier = Modifier) {
+
     Column(
-        Modifier
+        modifier
             .fillMaxSize()
             .background(color = Color.White)
     ) {

@@ -4,6 +4,8 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -49,57 +51,64 @@ fun ExpenseItem(
     modifier: Modifier = Modifier,
     item: TransactionItem
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Image(
-            painter = painterResource(id = item.profile),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
+    Column(modifier) {
+        Row(
             modifier = Modifier
-                .size(40.dp)
-                .clip(CircleShape)
-        )
-
-        Gap(4)
-
-        Column(modifier = Modifier.weight(1f)) {
-            TextApp(
-                item.title,
-                textColor = item.titleColor
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = item.profile),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape)
             )
 
             Gap(4)
 
-            item.subtitle?.let {
+            Column(modifier = Modifier.weight(1f)) {
                 TextApp(
-                    text = it,
-                    textColor = item.subtitleColor
+                    item.title,
+                    textColor = item.titleColor
                 )
+
+                Gap(4)
+
+                item.subtitle?.let {
+                    TextApp(
+                        text = it,
+                        textColor = item.subtitleColor
+                    )
+                }
+
             }
 
+            Column {
+                item.secondTitle?.let {
+                    TextApp(
+                        text = it,
+                        textColor = item.secondTitleColor
+                    )
+                }
+
+                Gap(4)
+
+                item.secondSubtitle?.let {
+                    TextApp(
+                        text = it,
+                        textColor = item.secondSubtitleColor
+                    )
+                }
+            }
         }
 
-        Column {
-            item.secondTitle?.let {
-                TextApp(
-                    text = it,
-                    textColor = item.secondTitleColor
-                )
-            }
-
-            Gap(4)
-
-            item.secondSubtitle?.let {
-                TextApp(
-                    text = it,
-                    textColor = item.secondSubtitleColor
-                )
-            }
+        repeat(2) {
+            DetailRowItem()
         }
     }
+
 }
 
 @Composable
@@ -158,7 +167,7 @@ fun GroupSummaryCard(
             ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(top = 8.dp, bottom = 4.dp, start = 8.dp, end = 8.dp)
+                    modifier = Modifier.padding(top = 8.dp, bottom = 8.dp, start = 8.dp, end = 8.dp)
                 ) {
                     TextApp(
                         text = stringResource(R.string.total_owe),
@@ -170,7 +179,7 @@ fun GroupSummaryCard(
                             moreVisibility = moreVisibility.not()
                         },
                         text = stringResource(R.string.details),
-                        icon = R.drawable.ic_arrow_down,
+                        rightIcon = R.drawable.ic_arrow_down,
                         textColor = Color.Gray
                     )
                 }
@@ -245,6 +254,48 @@ fun MultiCircularProfile(
     }
 }
 
+@Composable
+fun DetailRowItem(modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+
+            Box(
+                modifier = Modifier
+                    .size(8.dp)
+                    .background(Color.Red, CircleShape)
+            )
+
+            TextApp(
+                modifier = Modifier.padding(start = 8.dp),
+                text = "You owe Farhad R. for (Game net Group)",
+                maxLine = 1,
+                textColor = Color.Gray
+            )
+        }
+
+        TextApp(
+            text = "IRR100,000,00",
+            maxLine = 1,
+            textColor = Color.Red
+        )
+
+    }
+}
+
+@Preview
+@Composable
+private fun DetailRowItemPreview() {
+    DetailRowItem()
+}
+
 @Preview
 @Composable
 private fun MultiCircularProfilePreview() {
@@ -263,7 +314,6 @@ private fun GroupSummaryCardPreview() {
         groupName = "Group name",
     )
 }
-
 
 @Preview
 @Composable

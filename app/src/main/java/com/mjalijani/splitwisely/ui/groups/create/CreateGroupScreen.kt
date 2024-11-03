@@ -20,6 +20,7 @@ import com.mjalijani.splitwisely.ui.components.OutLineTextFieldApp
 import com.mjalijani.splitwisely.ui.components.SwitchApp
 import com.mjalijani.splitwisely.ui.components.TakePicture
 import com.mjalijani.splitwisely.ui.components.TopActionBar
+import com.mjalijani.splitwisely.ui.components.TypeSelectionView
 import com.mjalijani.splitwisely.ui.theme.Surface
 
 @Composable
@@ -53,6 +54,8 @@ fun CreateGroupScreen(modifier: Modifier = Modifier) {
             ) {
 
             }
+
+            TypeSelectionView()
 
             HorizontalDivider(thickness = 8.dp, color = Surface)
 
