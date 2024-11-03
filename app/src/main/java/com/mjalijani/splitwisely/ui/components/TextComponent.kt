@@ -30,7 +30,8 @@ fun TextApp(
     textColor: Color = Color.White,
     textSize: TextUnit = TextUnit.Unspecified,
     textAlignment: TextAlign = TextAlign.Start,
-    icon: Int? = null,
+    rightIcon: Int? = null,
+    leftIcon: Int? = null,
     maxLine: Int = 2,
     iconTint: Color = ThirdText,
     modifier: Modifier = Modifier
@@ -38,6 +39,14 @@ fun TextApp(
     Row(
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        leftIcon?.let {
+            Icon(
+                modifier = Modifier.padding(end = 8.dp),
+                painter = painterResource(it),
+                tint = iconTint,
+                contentDescription = null
+            )
+        }
         Text(
             modifier = modifier,
             text = text,
@@ -47,10 +56,10 @@ fun TextApp(
             fontSize = textSize,
             textAlign = textAlignment
         )
-        icon?.let {
+        rightIcon?.let {
             Icon(
                 modifier = Modifier.padding(start = 8.dp),
-                painter = painterResource(icon),
+                painter = painterResource(it),
                 tint = iconTint,
                 contentDescription = null
             )
@@ -61,7 +70,11 @@ fun TextApp(
 @Preview
 @Composable
 private fun TextAppPreview() {
-    TextApp(text = stringResource(R.string.details), icon = R.drawable.ic_arrow_up)
+    TextApp(
+        leftIcon = R.drawable.ic_airplane,
+        text = stringResource(R.string.details),
+        rightIcon = R.drawable.ic_arrow_up
+    )
 }
 
 @Composable
