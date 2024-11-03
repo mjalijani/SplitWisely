@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mjalijani.splitwisely.R
 import com.mjalijani.splitwisely.data.MockData
+import com.mjalijani.splitwisely.ui.components.TextApp
 import com.mjalijani.splitwisely.ui.components.TopActionBar
 import com.mjalijani.splitwisely.ui.theme.DividerColor
 import com.mjalijani.splitwisely.ui.theme.Surface
@@ -44,9 +45,19 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
                 rightIconOnClick = {})
             ProfileHeader(profile = MockData.profile)
             HorizontalDivider(thickness = 8.dp, color = Surface)
+
+        }
+
+        item {
+            TextApp(
+                text = stringResource(R.string.settings),
+                textColor = Color.Black,
+                modifier = Modifier.padding(16.dp)
+            )
         }
 
         itemsIndexed(settingItems) { index, item ->
+
             ProfileItemComponent(title = item)
             if (index != settingItems.count()) HorizontalDivider(
                 thickness = 1.dp,
@@ -58,6 +69,14 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
 
         item {
             HorizontalDivider(thickness = 8.dp, color = Surface)
+        }
+
+        item {
+            TextApp(
+                text = stringResource(R.string.feedback),
+                textColor = Color.Black,
+                modifier = Modifier.padding(16.dp)
+            )
         }
 
         itemsIndexed(feedbackItems) { index, item ->
