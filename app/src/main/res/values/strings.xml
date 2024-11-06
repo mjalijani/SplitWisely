@@ -65,5 +65,8 @@
     <string name="confirm">Confirm</string>
     <string name="title">title</string>
     <string name="description">description</string>
+    <string name="add_member">Add Member</string>
+    <string name="already_in_group">Already in group</string>
+    <string name="friends_on_splitwisely">Friends on SplitWisely</string>
 
 </resources>
