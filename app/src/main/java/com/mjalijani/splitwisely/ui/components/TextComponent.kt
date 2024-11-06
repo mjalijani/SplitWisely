@@ -1,5 +1,6 @@
 package com.mjalijani.splitwisely.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -34,21 +35,26 @@ fun TextApp(
     leftIcon: Int? = null,
     maxLine: Int = 2,
     iconTint: Color = ThirdText,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    leftIconClick: (() -> Unit)? = null,
+    rightIconClick: (() -> Unit)? = null,
 ) {
     Row(
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
     ) {
         leftIcon?.let {
             Icon(
-                modifier = Modifier.padding(end = 8.dp),
+                modifier = Modifier
+                    .padding(end = 8.dp)
+                    .clickable { leftIconClick?.invoke() },
                 painter = painterResource(it),
                 tint = iconTint,
                 contentDescription = null
             )
         }
         Text(
-            modifier = modifier,
+            modifier = modifier.weight(1f),
             text = text,
             maxLines = maxLine,
             overflow = TextOverflow.Ellipsis,
@@ -58,7 +64,9 @@ fun TextApp(
         )
         rightIcon?.let {
             Icon(
-                modifier = Modifier.padding(start = 8.dp),
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .clickable { rightIconClick?.invoke() },
                 painter = painterResource(it),
                 tint = iconTint,
                 contentDescription = null

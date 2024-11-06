@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.mjalijani.splitwisely.R
 import com.mjalijani.splitwisely.data.MockData
@@ -75,7 +76,10 @@ fun ProfileHeader(modifier: Modifier = Modifier, profile: Profile) {
                 .padding(16.dp)
         ) {
 
-            ProfileWithCameraIcon(painterResource(image)) {}
+            ProfileWithCustomIcon(
+                profileImage = painterResource(image),
+                littleIcon = painterResource(R.drawable.circular_camera)
+            ) {}
 
             Column(
                 Modifier
@@ -93,9 +97,15 @@ fun ProfileHeader(modifier: Modifier = Modifier, profile: Profile) {
 }
 
 @Composable
-fun ProfileWithCameraIcon(profileImage: Painter, onClick: () -> Unit) {
+fun ProfileWithCustomIcon(
+    modifier: Modifier = Modifier,
+    profileImage: Painter,
+    littleIcon: Painter,
+    littleIconSize: Dp = 24.dp,
+    onClick: () -> Unit
+) {
     Box(
-        modifier = Modifier.size(64.dp)
+        modifier = modifier.size(64.dp)
     ) {
 
         Image(
@@ -107,14 +117,14 @@ fun ProfileWithCameraIcon(profileImage: Painter, onClick: () -> Unit) {
         )
 
         Icon(
-            painter = painterResource(R.drawable.circular_camera),
-            contentDescription = "Take Picture",
+            painter = littleIcon,
+            contentDescription = null,
             tint = Color.White,
             modifier = Modifier
                 .clickable {
                     onClick.invoke()
                 }
-                .size(24.dp)
+                .size(littleIconSize)
                 .align(Alignment.BottomEnd)
                 .offset(x = (-2).dp, y = (-2).dp)
         )
