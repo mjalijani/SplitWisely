@@ -73,7 +73,7 @@ Avoid reinventing the wheel by following these guidelines:
 
 ## Author
 
-<a href="https://twitter.com/MValceleanu" target="_blank">
+<a href="https://www.linkedin.com/in/mohamad-alijani/" target="_blank">
   <img src="https://avatars.githubusercontent.com/u/21081719?v=4" width="70" align="left">
 </a>
 
