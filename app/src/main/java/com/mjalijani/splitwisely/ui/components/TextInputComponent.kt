@@ -28,6 +28,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mjalijani.splitwisely.R
+import com.mjalijani.splitwisely.helper.SimpleCallBack
+import com.mjalijani.splitwisely.helper.StringCallBack
 import com.mjalijani.splitwisely.ui.theme.Surface
 import com.mjalijani.splitwisely.ui.theme.ThirdText
 
@@ -37,7 +39,10 @@ fun TextInputApp(
     textValue: String = "",
     placeHolder: String = "",
     textColor: Color = ThirdText,
-    onValueChange: (String) -> Unit
+    placeHolderColor: Color = ThirdText,
+    trailingIcon: @Composable SimpleCallBack? = null,
+    leadingIcon: SimpleCallBack? = null,
+    onValueChange: StringCallBack
 ) {
     val value by remember {
         mutableStateOf(textValue)
@@ -47,15 +52,23 @@ fun TextInputApp(
             .clip(shape = RoundedCornerShape(corner = CornerSize(8.dp)))
             .background(color = Surface),
         value = value,
-        placeholder = { TextApp(text = placeHolder) },
+        placeholder = { TextApp(text = placeHolder, textColor = placeHolderColor) },
         onValueChange = {
             onValueChange.invoke(it)
+        },
+        trailingIcon = {
+            trailingIcon?.invoke()
+        },
+        leadingIcon = {
+            leadingIcon?.invoke()
         },
         colors = TextFieldDefaults.colors(
             focusedTextColor = textColor,
             unfocusedTextColor = textColor,
-            unfocusedPlaceholderColor = textColor,
-            focusedPlaceholderColor = textColor
+            unfocusedPlaceholderColor = placeHolderColor,
+            focusedPlaceholderColor = placeHolderColor,
+            unfocusedIndicatorColor = Color.Transparent,
+            focusedIndicatorColor = Color.Transparent,
         )
     )
 }
