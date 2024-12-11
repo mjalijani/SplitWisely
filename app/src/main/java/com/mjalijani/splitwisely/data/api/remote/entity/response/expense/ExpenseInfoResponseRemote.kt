@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class ExpenseInfoResponseRemote(
     @SerializedName("expense")
-    val expense: Expense
+    val expense: ExpenseDto
 )

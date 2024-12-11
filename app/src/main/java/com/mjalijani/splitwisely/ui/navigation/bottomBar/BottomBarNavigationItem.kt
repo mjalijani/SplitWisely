@@ -8,28 +8,23 @@ enum class BottomNavBarDestination(
     val iconTextId: Int?
 ) {
     FRIENDS(
-        selectedIcon = R.drawable.ic_person_selected,
-        unselectedIcon = R.drawable.ic_person_unselected,
+        selectedIcon = R.drawable.friends_selected,
+        unselectedIcon = R.drawable.friends,
         iconTextId = R.string.friends
     ),
     GROUPS(
-        selectedIcon = R.drawable.ic_group_selected,
-        unselectedIcon = R.drawable.ic_group_unselected,
+        selectedIcon = R.drawable.friends_selected,
+        unselectedIcon = R.drawable.friends,
         iconTextId = R.string.groups,
     ),
-    NEW_EXPENSE(
-        selectedIcon = R.drawable.ic_new_expense,
-        unselectedIcon = R.drawable.ic_new_expense,
-        iconTextId = null,
-    ),
     ACTIVITY(
-        selectedIcon = R.drawable.ic_activity_selected,
-        unselectedIcon = R.drawable.ic_activity_unselected,
+        selectedIcon = R.drawable.history_selected,
+        unselectedIcon = R.drawable.history,
         iconTextId = R.string.activity,
     ),
     ACCOUNT(
-        selectedIcon = R.drawable.ic_account_selected,
-        unselectedIcon = R.drawable.ic_account_unselected,
+        selectedIcon = R.drawable.profile_selected,
+        unselectedIcon = R.drawable.profile,
         iconTextId = R.string.account,
     )
     ;

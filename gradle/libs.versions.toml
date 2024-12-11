@@ -1,33 +1,33 @@
 [versions]
-agp = "8.4.2"
-kotlin = "1.9.0"
+agp = "8.7.1"
+kotlin = "1.9.24"
 hilt = "2.44"
-coreKtx = "1.10.1"
+coreKtx = "1.15.0"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-activityCompose = "1.8.0"
-composeBom = "2023.08.00"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+activityCompose = "1.9.3"
+composeBom = "2024.10.01"
 okhttp-version = "5.0.0-alpha.3"
 scalar-converter-version = "2.9.0"
 kotlin-serialization-version = "1.5.1"
-gson-serialization-version = "2.5.0"
+gson-serialization-version = "2.9.0"
 jakewharton-convertor-version = "1.0.0"
+persian-date-version = "1.6.1"
 retrofit-version = "2.9.0"
 timber_version = "5.0.1"
-work-runtime-ktx = "2.8.1"
-room-runtime = "2.5.0"
-nav_compose_version = "1.1.0"
-hilt-work-version = "1.0.0"
-lifecycle-viewmodel-ktx = "2.7.0"
-paging-runtime-ktx = "3.2.1"
-hilt-version = "2.48"
-hilt-compiler-version  ="2.44"
-kotlinx-serialization-json = "1.5.1"
-hilt-android-compiler = "2.48"
-lifecycle-runtime-ktx = "2.7.0"
+room-runtime = "2.6.1"
+nav_compose_version = "1.2.0"
+hilt-work-version = "1.2.0"
+lifecycle-viewmodel-ktx = "2.8.7"
+paging-runtime-ktx = "3.3.2"
+hilt-version = "2.49"
+hilt-compiler-version = "2.44"
+lifecycle-runtime-ktx = "2.8.7"
 coil-compose = "2.4.0"
 org-jetbrains-kotlin-android = "1.9.0"
+constraintlayout = "1.1.0"
+lottie = "6.0.0"
 
 [libraries]
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
@@ -53,7 +53,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt-version" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt-compiler-version" }
-dagger_nav_compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "nav_compose_version"}
+dagger_nav_compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "nav_compose_version" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hilt-work-version" }
 androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "hilt-work-version" }
 
@@ -66,9 +66,13 @@ gson-serialization = { module = "com.squareup.retrofit2:converter-gson", version
 kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization-version" }
 jakewharton-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "jakewharton-convertor-version" }
 
+persian-date = { module = "com.github.samanzamani:PersianDate", version.ref = "persian-date-version" }
+
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle-runtime-ktx" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose",version.ref = "constraintlayout" }
+lottie = { module = "com.airbnb.android:lottie-compose",version.ref = "lottie" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

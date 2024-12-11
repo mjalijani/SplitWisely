@@ -1,5 +1,6 @@
 package com.mjalijani.splitwisely.ui.account
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
@@ -7,6 +8,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -28,30 +31,18 @@ fun AccountScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
+            .background(color = Color.White)
             .verticalScroll(scrollState)
     ) {
         AccountTopBarComponent()
-        AccountTitleComponent()
 
-        AccountHeaderItemComponent(title = "Settings")
         AccountProfileItemComponent(
             fullName = "test full name",
             email = "test@test.com",
+            phone = "",
             onClick = { navigateToProfile.invoke() })
-        AccountItemComponent(title = "Scan Code", iconRes = R.drawable.ic_scan)
-        Divider(thickness = 0.5.dp)
-        AccountItemComponent(title = "SplitWisely Pro")
-        Divider(thickness = 0.5.dp)
+        AccountItemComponent(title = stringResource(R.string.email), iconRes = R.drawable.ic_sms)
 
-        AccountHeaderItemComponent(title = "Preferences")
-        AccountItemComponent(title = "Notifications")
-        Divider(thickness = 0.5.dp)
-        AccountItemComponent(title = "Passcode")
-
-        AccountHeaderItemComponent(title = "Feedback")
-        AccountItemComponent(title = "Rate SplitWisely")
-        Divider(thickness = 0.5.dp)
-        AccountItemComponent(title = "Contact us")
     }
 }
 

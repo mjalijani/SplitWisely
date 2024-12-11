@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.mjalijani.splitwisely"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.mjalijani.splitwisely"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -42,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     packaging {
         resources {
@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -71,6 +72,9 @@ dependencies {
 
     // Coil
     implementation(libs.coil.compose)
+
+    //lottie animation
+    implementation(libs.lottie)
 
     // Paging 3
     implementation(libs.androidx.paging.runtime.ktx)
@@ -115,4 +119,8 @@ dependencies {
 
     // Retrofit with Jakewharton Converter
     implementation(libs.jakewharton.converter)
+
+    // Persian Date
+    implementation(libs.persian.date)
+
 }
