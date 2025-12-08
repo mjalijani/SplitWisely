@@ -1,33 +1,50 @@
 [versions]
-agp = "8.7.1"
-kotlin = "1.9.24"
-hilt = "2.44"
-coreKtx = "1.15.0"
+agp = "8.13.1"
+kotlin = "2.2.21"
+
+composeBom = "2025.12.00"
+
+hilt = "2.52"
+hilt-version = "2.52"
+hilt-compiler-version = "2.52"
+
+coreKtx = "1.17.0"
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-activityCompose = "1.9.3"
-composeBom = "2024.10.01"
-okhttp-version = "5.0.0-alpha.3"
-scalar-converter-version = "2.9.0"
-kotlin-serialization-version = "1.5.1"
-gson-serialization-version = "2.9.0"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+
+activityCompose = "1.12.1"
+
+okhttp-version = "4.12.0"
+retrofit-version = "2.11.0"
+scalar-converter-version = "2.11.0"
+gson-serialization-version = "2.11.0"
+kotlin-serialization-version = "1.7.3"
 jakewharton-convertor-version = "1.0.0"
-persian-date-version = "1.6.1"
-retrofit-version = "2.9.0"
+
+persian-date-version = "1.7.1"
+
 timber_version = "5.0.1"
-room-runtime = "2.6.1"
-nav_compose_version = "1.2.0"
-hilt-work-version = "1.2.0"
-lifecycle-viewmodel-ktx = "2.8.7"
-paging-runtime-ktx = "3.3.2"
-hilt-version = "2.49"
-hilt-compiler-version = "2.44"
-lifecycle-runtime-ktx = "2.8.7"
+
+room-runtime = "2.8.4"
+
+nav_compose_version = "1.3.0"
+hilt-work-version = "1.3.0"
+
+lifecycle-runtime-ktx = "2.10.0"
+lifecycle-viewmodel-ktx = "2.10.0"
+lifecycle-viewmodel-compose = "2.8.7"
+
+paging-runtime-ktx = "3.3.6"
+
 coil-compose = "2.4.0"
-org-jetbrains-kotlin-android = "1.9.0"
-constraintlayout = "1.1.0"
-lottie = "6.0.0"
+
+constraintlayout = "1.1.1"
+
+lottie = "6.3.0"
+
+org-jetbrains-kotlin-android = "1.9.24"
+org-jetbrains-kotlin-kapt = "1.9.24"
 
 [libraries]
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
@@ -79,3 +96,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 com-dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "org-jetbrains-kotlin-android" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
