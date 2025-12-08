@@ -36,9 +36,13 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = "17"
+
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
     }
+    
     buildFeatures {
         compose = true
     }
@@ -83,7 +87,6 @@ dependencies {
 
     // Room
     implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.paging)
 
@@ -116,7 +119,7 @@ dependencies {
     implementation(libs.kotlin.serialization)
     implementation(libs.gson.serialization)
 
-    // Retrofit with Jakewharton Converter
+    // Retrofit with Wharton Converter
     implementation(libs.jakewharton.converter)
 
     // Persian Date
