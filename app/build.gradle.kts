@@ -3,16 +3,17 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.com.dagger.hilt)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
     namespace = "com.mjalijani.splitwisely"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.mjalijani.splitwisely"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -36,13 +37,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
+        kotlinCompilerExtensionVersion = "1.6.11"
     }
     packaging {
         resources {
@@ -88,7 +89,6 @@ dependencies {
 
     //Work Manager + Hilt
     implementation(libs.androidx.hilt.work)
-    kapt(libs.dagger.hilt.compiler)
     kapt(libs.androidx.hilt.compiler)
 
     // Dagger - Hilt
@@ -101,7 +101,6 @@ dependencies {
 
     // Compose viewmodel utility
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-
 
     // Timber for log
     implementation(libs.timber)
