@@ -1,11 +1,11 @@
 [versions]
 agp = "8.13.1"
-kotlin = "2.2.21"
+kotlin = "2.0.21"
 
 composeBom = "2025.12.00"
 
-hilt = "2.52"
-hilt-version = "2.52"
+hilt = "2.57.2"
+hilt-version = "2.57.2"
 hilt-compiler-version = "2.52"
 
 coreKtx = "1.17.0"
@@ -19,7 +19,7 @@ okhttp-version = "4.12.0"
 retrofit-version = "2.11.0"
 scalar-converter-version = "2.11.0"
 gson-serialization-version = "2.11.0"
-kotlin-serialization-version = "1.7.3"
+kotlin-serialization-version = "1.8.1"
 jakewharton-convertor-version = "1.0.0"
 
 persian-date-version = "1.7.1"
@@ -36,13 +36,13 @@ lifecycle-viewmodel-ktx = "2.10.0"
 
 paging-runtime-ktx = "3.3.6"
 
-coil-compose = "2.4.0"
+coil-compose = "2.7.0"
 
 constraintlayout = "1.1.1"
 
 lottie = "6.3.0"
 
-org-jetbrains-kotlin-android = "1.9.24"
+org-jetbrains-kotlin-android = "2.0.21"
 
 [libraries]
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
